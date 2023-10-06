@@ -32,7 +32,7 @@ func _process(delta: float):
 			dashing = true
 
 	position += movement
-	look_at(transform.origin + movement, Vector3.UP, true) 
+	$'Model'.look_at(transform.origin + movement, Vector3.UP, true) 
 
 	
 func set_health(health: int):
