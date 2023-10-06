@@ -1,13 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://csohnspvb374d"]
+[gd_scene load_steps=4 format=3 uid="uid://csohnspvb374d"]
 
 [ext_resource type="PackedScene" uid="uid://dbrxwipmscosm" path="res://Graveyard Assets/character-digger.glb" id="1_l71ov"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="2_1uhff"]
+[ext_resource type="PackedScene" uid="uid://br81rul46txb4" path="res://Enemy/Enemy.tscn" id="3_2xni3"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2.27592, 2.95304, 1.87542)
 projection = 1
+current = true
 size = 10.0
 
-[node name="character-digger" parent="." instance=ExtResource("1_l71ov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0518076, 0, -0.0234623)
+[node name="Player" parent="." instance=ExtResource("1_l71ov")]
+script = ExtResource("2_1uhff")
+
+[node name="Enemy" parent="." instance=ExtResource("3_2xni3")]
