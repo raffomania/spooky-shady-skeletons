@@ -24,7 +24,7 @@ func _process(delta: float):
 		var z = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		movement = Vector3(x, 0, z).rotated(Vector3.UP, PI / 4).normalized() * delta
 
-		if (Input.get_action_strength("dash")):
+		if (Input.get_action_strength("dash") and movement != Vector3.ZERO):
 			movement *= dash_speed_multiplier
 			dashing = true
 
