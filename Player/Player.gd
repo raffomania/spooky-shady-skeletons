@@ -39,7 +39,7 @@ func _process(delta: float):
 	
 func set_health(health: int):
 	health_percent = health
-	$OmniLight3D.omni_range = health / 10
+	$OmniLight3D.omni_range = health / 10.0
 	
 	
 	
