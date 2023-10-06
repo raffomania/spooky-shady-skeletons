@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://csohnspvb374d"]
+
+[ext_resource type="PackedScene" uid="uid://dbrxwipmscosm" path="res://Graveyard Assets/character-digger.glb" id="1_l71ov"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2.27592, 2.95304, 1.87542)
+projection = 1
+size = 10.0
+
+[node name="character-digger" parent="." instance=ExtResource("1_l71ov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0518076, 0, -0.0234623)
