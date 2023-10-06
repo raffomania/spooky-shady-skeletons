@@ -12,6 +12,9 @@ var dashing = false
 var movement = Vector3.ZERO
 var current_dash_duration = 0
 
+#Player Health
+var health_percent = 100
+
 func _process(delta: float):
 	if (current_dash_duration >= dash_duration):
 		dashing = false
@@ -29,3 +32,10 @@ func _process(delta: float):
 			dashing = true
 
 	position += movement
+	
+func set_health(health: int):
+	health_percent = health
+	$OmniLight3D.omni_range = health / 10
+	
+	
+	
