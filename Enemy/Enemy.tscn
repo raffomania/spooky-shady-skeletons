@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://br81rul46txb4"]
+[gd_scene load_steps=4 format=3 uid="uid://br81rul46txb4"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_5i7qf"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="QuadMesh" id="QuadMesh_u66nh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bnhmk"]
+radius = 0.220328
+height = 1.01264
+
+[node name="Enemy" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485793, 0)
 script = ExtResource("1_5i7qf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_u66nh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bnhmk")
