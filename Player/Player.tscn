@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://hcgbg7naavmp"]
+
+[ext_resource type="PackedScene" uid="uid://dbrxwipmscosm" path="res://Graveyard Assets/character-digger.glb" id="1_nn83m"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("2_fpfru")
+
+[node name="Model" parent="." instance=ExtResource("1_nn83m")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19077, 0)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2.27592, 2.95304, 1.87542)
+projection = 1
+current = true
+size = 10.0
