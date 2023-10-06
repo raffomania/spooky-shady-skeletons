@@ -1,10 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://csohnspvb374d"]
+[gd_scene load_steps=7 format=3 uid="uid://csohnspvb374d"]
 
-[ext_resource type="PackedScene" uid="uid://hcgbg7naavmp" path="res://Player/Player.tscn" id="2_n31m5"]
+[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="2_n31m5"]
 [ext_resource type="PackedScene" uid="uid://br81rul46txb4" path="res://Enemy/Enemy.tscn" id="3_2xni3"]
 [ext_resource type="PackedScene" uid="uid://0poibhdax478" path="res://Graveyard Assets/candle.glb" id="3_61fq6"]
+[ext_resource type="Shader" path="res://ground.gdshader" id="3_h6t2i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2d8so"]
+resource_name = "groundmat"
+render_priority = 0
+shader = ExtResource("3_h6t2i")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_75m5c"]
+material = SubResource("ShaderMaterial_2d8so")
+size = Vector2(10, 10)
 
 [node name="Node3D" type="Node3D"]
 
