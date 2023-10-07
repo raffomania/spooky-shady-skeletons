@@ -8,8 +8,8 @@
 radius = 0.220328
 height = 1.01264
 
-[node name="Enemy" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485793, 0)
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4104, 1.56301, -68.0638)
 script = ExtResource("1_5i7qf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

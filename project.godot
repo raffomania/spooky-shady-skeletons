@@ -15,9 +15,15 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+<<<<<<< Updated upstream
 [autoload]
 
 GlobalSignals="*res://Singletons/global_signals.gd"
+=======
+[dotnet]
+
+project/assembly_name="Spooky Shady Skeletons"
+>>>>>>> Stashed changes
 
 [input]
 
