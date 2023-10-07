@@ -3,6 +3,7 @@ class_name Enemy
 
 # var camera : Camera3
 @onready var player: Player = get_tree().get_first_node_in_group("player")
+@onready var spawner = get_tree().get_first_node_in_group("spawner")
 var movement_speed: float
 
 # XP that is given to the player on death
@@ -38,6 +39,7 @@ func take_damage(damage: int):
     #print("Took %d damage. Health now: %d" % [damage, health])
 
     if health <= 0:
+        spawner.drop_loot(position, xp)
         queue_free()
 
         #animation_enemy.play("die")
