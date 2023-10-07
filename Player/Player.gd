@@ -115,8 +115,3 @@ func set_health(health: float):
 func enable_dash():
 	is_dash_possible = true
 	print("dash is possible now")
-
-
-
-
-
