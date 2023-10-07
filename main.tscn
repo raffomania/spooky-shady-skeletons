@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://csohnspvb374d"]
+[gd_scene load_steps=11 format=3 uid="uid://csohnspvb374d"]
 
 [ext_resource type="PackedScene" uid="uid://drjl68dym5x1h" path="res://Player/Player.tscn" id="2_n31m5"]
 [ext_resource type="PackedScene" uid="uid://0poibhdax478" path="res://Graveyard Assets/candle.glb" id="3_61fq6"]
 [ext_resource type="Shader" path="res://ground.gdshader" id="3_h6t2i"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="5_g027a"]
 [ext_resource type="AudioStream" uid="uid://bnmn4jq4rtrss" path="res://music_remix.ogg" id="6_1qtdr"]
-[ext_resource type="Script" path="res://GlobalClock.gd" id="6_m7x7b"]
 [ext_resource type="Script" path="res://UpgradeStation.gd" id="7_1t088"]
 [ext_resource type="PackedScene" uid="uid://bswbmxgcpdwbf" path="res://Graveyard Assets/coffin-old.glb" id="7_nqtgc"]
 
@@ -41,13 +40,8 @@ script = ExtResource("5_g027a")
 spawn_count = 2
 spawn_freq = 8
 
-[node name="GlobalClock" type="Node" parent="."]
-script = ExtResource("6_m7x7b")
-beats_per_minute = 128
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_1qtdr")
-autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lx8fk")

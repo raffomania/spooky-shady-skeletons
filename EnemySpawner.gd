@@ -6,18 +6,15 @@ var spawn_count : int
 @export
 var spawn_freq : int
 
-var clock_ticks_since_last_spawn : int
 var enemy_scene : Resource
 var is_upgrading := false
 
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-    GlobalSignals.connect("global_clock_tick", spawn)
     enemy_scene = preload("res://Enemy/Enemy.tscn")
-    # for debugging, instantly spawn enemies
-    clock_ticks_since_last_spawn = spawn_freq
     GlobalSignals.level_up.connect(on_level_up)
+    GlobalClock.bar.connect(spawn)
 
 
 func on_level_up():
@@ -25,8 +22,7 @@ func on_level_up():
 
 
 func spawn():
-    clock_ticks_since_last_spawn += 1
-    if is_upgrading or (clock_ticks_since_last_spawn < spawn_freq):
+    if is_upgrading:
         return
 
     for i in spawn_count:
@@ -38,4 +34,3 @@ func spawn():
         add_child(enemy)
 
     print("spawned %s enemies" % spawn_count)
-    clock_ticks_since_last_spawn = 0
