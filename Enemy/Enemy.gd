@@ -3,40 +3,38 @@ class_name Enemy
 
 # var camera : Camera3
 @onready var player: Player = get_tree().get_first_node_in_group("player")
+var movement_speed: float
 
-# TODO Make movement speed dependent on player speed
-@export var movement_speed: float
-# XP that is given to the player on death
-@export var xp: float = 1.0
-
-    #Enemy Health
-var enemy_health_percent: float:
-    set = set_health
+# Enemy Health
+# Also define a setter for the health property
+var health: int
 
 
+# Register all enemies to the enemies group
+# Also connect to the GlobalClock for beat based animations
 func _ready():
     add_to_group("enemies")
     GlobalClock.beat.connect(jump)
-    enemy_health_percent = 100.0
+
+func move_towards_player(delta):
+    var direction = global_position.direction_to(player.global_position)
+    var velocity = direction * movement_speed * delta
+    global_position += velocity
 
 
+# All enemies jump based on the music beat
 func jump():
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed
     create_tween().tween_property(self, "position", position + velocity, 0.1)
 
 
-func _process(delta):
-    var direction = global_position.direction_to(player.global_position)
-    var velocity = direction * movement_speed * delta
-    global_position += velocity
+# Set the health for this enemy.
+func take_damage(damage: int):
+    health -= damage
+    print("Took %d damage. Health now: %d" % [damage, health])
 
-
-func set_health(health: float):
-    enemy_health_percent = health
-    print_debug("take_damage", health)
-
-    if enemy_health_percent <= 0:
+    if health <= 0:
         queue_free()
 
         #animation_enemy.play("die")

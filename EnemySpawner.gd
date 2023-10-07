@@ -6,15 +6,15 @@ var spawn_count : int
 @export
 var spawn_freq : int
 
-var enemy_scene : Resource
+var skeleton_scene : Resource
 var pumpkin_scene : Resource
 var is_upgrading := false
 
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-    enemy_scene = preload("res://Enemy/Enemy.tscn")
-    pumpkin_scene = preload("res://Enemy/pumpkin.tscn")
+    skeleton_scene = preload("res://Enemy/Skeleton/Skeleton.tscn")
+    pumpkin_scene = preload("res://Enemy/Pumpkin/Pumpkin.tscn")
     GlobalSignals.level_up.connect(on_level_up)
     GlobalClock.bar.connect(spawn)
 
@@ -28,7 +28,7 @@ func spawn():
         return
 
     for i in spawn_count:
-        var enemy = enemy_scene.instantiate(i)
+        var enemy = skeleton_scene.instantiate(i)
         var x_offset = rng.randf_range(-10.0, 10.0)
         var z_offset = rng.randf_range(-10.0, 10.0)
         enemy.position.x += x_offset

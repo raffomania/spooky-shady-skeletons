@@ -2,8 +2,8 @@ extends Area3D
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
-# Enemy damage in percent
-@export var damage: float
+# Enemy damage
+@export var damage: int
 
 # The direction into which the burger is flying right now.
 var direction: Vector3 = Vector3(1, 0, 0)
@@ -13,7 +13,7 @@ const power_distance: float = 6;
 var max_distance: float = 4;
 
 func make_damage(enemy: Enemy):
-    enemy.enemy_health_percent -= damage
+    enemy.take_damage(damage)
 
 func _ready():
     # Register on the global clock

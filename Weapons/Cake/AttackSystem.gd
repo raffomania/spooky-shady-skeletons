@@ -1,7 +1,7 @@
 extends Area3D
 
-@export
-var damage : float # percent damage per attack
+# Damage per attack
+@export var damage: int
 
 var cake_timer: Timer
 
@@ -18,7 +18,7 @@ func _process(delta):
     $cake.rotate_y(delta * 4)
 
 func make_damage(enemy: Enemy):
-    enemy.enemy_health_percent -= damage
+    enemy.take_damage(damage)
 
 func on_area_entered(other: Area3D):
     if other is Enemy and $cake.visible:

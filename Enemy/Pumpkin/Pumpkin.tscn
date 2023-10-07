@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c26uhm02pdxod"]
 
-[ext_resource type="Script" path="res://Enemy/Pumpkin.gd" id="1_rtf6g"]
+[ext_resource type="Script" path="res://Enemy/Pumpkin/Pumpkin.gd" id="1_rtf6g"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g33ew"]
 
