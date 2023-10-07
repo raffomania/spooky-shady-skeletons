@@ -97,8 +97,10 @@ func add_xp(amount: float):
 	$XPParticles.amount = 10 * amount
 	$XPParticles.emitting = true
 	
+
 func level_up(new_level: int):
 	level = new_level
+	GlobalSignals.level_up.emit()
 	print('level up: ', new_level)
 
 	
