@@ -5,6 +5,9 @@ class_name Enemy
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 var movement_speed: float
 
+# XP that is given to the player on death
+@export var xp: float = 1.0
+
 # Enemy Health
 # Also define a setter for the health property
 var health: int

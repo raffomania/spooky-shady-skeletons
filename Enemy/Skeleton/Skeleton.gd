@@ -1,9 +1,6 @@
 extends Enemy
 class_name Skeleton
 
-# XP that is given to the player on death
-@export var xp: float = 1.0
-
 func _ready():
     super()
     health = 100

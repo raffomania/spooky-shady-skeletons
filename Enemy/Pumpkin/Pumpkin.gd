@@ -1,13 +1,11 @@
 extends Enemy
 class_name Pumpkin
 
-# XP that is given to the player on death
-@export var xp: float = 3.0
-
 func _ready():
     super()
     health = 200
     movement_speed = 0.5
+    xp = 3.0
 
 
 func _process(delta):
