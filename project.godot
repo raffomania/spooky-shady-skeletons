@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GlobalSignals="*res://Singletons/global_signals.gd"
 
+[dotnet]
+
+project/assembly_name="Spooky Shady Skeletons"
+
 [input]
 
 move_right={

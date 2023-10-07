@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
 [ext_resource type="PackedScene" uid="uid://c40ltvluklnk2" path="res://Player/Model.tscn" id="2_q7047"]
-[ext_resource type="PackedScene" uid="uid://wkggbceph75q" path="res://Weapons/cake_weapon.tscn" id="3_xb6cu"]
+[ext_resource type="PackedScene" uid="uid://wkggbceph75q" path="res://Weapons/Cake/cake_weapon.tscn" id="3_xb6cu"]
 [ext_resource type="Script" path="res://Player/DamageLight.gd" id="4_yfimt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_svnhw"]
@@ -48,6 +48,7 @@ current = true
 size = 10.0
 
 [node name="CakeWeapon" parent="." instance=ExtResource("3_xb6cu")]
+damage = 50.0
 
 [node name="DamageDetector" type="Area3D" parent="."]
 

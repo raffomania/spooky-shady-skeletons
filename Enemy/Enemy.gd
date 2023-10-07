@@ -11,11 +11,25 @@ class_name Enemy
 @export
 var xp: float = 1.0
 
+    #Enemy Health
+var enemy_health_percent: float:
+    set = set_health
+    
 func _process(delta):
-	var direction = global_position.direction_to(player.global_position)
-	var velocity = direction * movement_speed * delta
-	global_position += velocity
-	
+    var direction = global_position.direction_to(player.global_position)
+    var velocity = direction * movement_speed * delta
+    global_position += velocity
+    
 func _ready():
-	add_to_group("enemies")
+    add_to_group("enemies")
+    enemy_health_percent = 100.0
+    
+func set_health(health: float):
+    enemy_health_percent = health
+    print_debug("take_damage", health)
 
+    if enemy_health_percent <= 0:
+        queue_free()
+        
+        #animation_enemy.play("die")
+        
