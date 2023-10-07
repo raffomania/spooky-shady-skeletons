@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjjcopdf8axjd"]
 
-[ext_resource type="Texture2D" uid="uid://bf30y4e21rr7k" path="res://Graveyard Assets/Textures/colormap.png" id="2_5mdgk"]
+[ext_resource type="Texture2D" uid="uid://bf30y4e21rr7k" path="res://Assets/Graveyard Assets/Textures/colormap.png" id="2_5mdgk"]
 [ext_resource type="Script" path="res://Upgrade Station/Upgrade.gd" id="2_c7fll"]
 [ext_resource type="Script" path="res://Upgrade Station/Countdown.gd" id="3_kgi0g"]
 
