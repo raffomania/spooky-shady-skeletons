@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://drjl68dym5x1h"]
+[gd_scene load_steps=6 format=3 uid="uid://drjl68dym5x1h"]
 
 [ext_resource type="PackedScene" uid="uid://dbrxwipmscosm" path="res://Graveyard Assets/character-digger.glb" id="1_nn83m"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
@@ -7,6 +7,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4yxxp"]
 height = 0.781083
 radius = 1.75126
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_svnhw"]
+radius = 0.294901
 
 [node name="Player" type="Node3D"]
 script = ExtResource("2_fpfru")
@@ -31,3 +34,9 @@ script = ExtResource("3_t7aj5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackSystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.534362, 0)
 shape = SubResource("CylinderShape3D_4yxxp")
+
+[node name="DamageDetector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45266, 0)
+shape = SubResource("SphereShape3D_svnhw")

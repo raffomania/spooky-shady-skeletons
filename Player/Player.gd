@@ -19,6 +19,7 @@ var health_percent: float:
 func _ready():
 	# trigger set_health method
 	health_percent = 100.0
+	$DamageDetector.area_entered.connect(attacked_by_enemy)
 
 func _process(delta: float):
 	if (current_dash_duration >= dash_duration):
@@ -41,8 +42,11 @@ func _process(delta: float):
 	if (movement.length() > 0):
 		$'Model'.look_at(transform.origin + movement, Vector3.UP, true) 
 
+func attacked_by_enemy(other: Area3D):
+	if other.is_in_group("enemies"):
+		other.queue_free()
+		health_percent -= 5.0
 	
 func set_health(health: float):
-	print("set")
 	health_percent = health
 	$OmniLight3D.omni_range = health / 8.0
