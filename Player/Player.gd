@@ -60,11 +60,15 @@ func _process(delta: float):
 
 
 func attacked_by_enemy(other: Area3D):
-	if other.is_in_group("enemies"):
+	if other.is_in_group("enemies") and health_percent > 0:
 		other.queue_free()
-		health_percent -= 5.0
+		health_percent -= 50.0
 		$DamageLight.flash()
 	
 func set_health(health: float):
 	health_percent = health
 	$OmniLight3D.omni_range = health / 8.0
+	if health_percent <= 0:
+		animation_player.play("die")
+		# stop accepting player input
+		set_process(false)

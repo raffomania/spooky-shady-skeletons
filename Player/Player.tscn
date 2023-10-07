@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://drjl68dym5x1h"]
 
-[ext_resource type="PackedScene" uid="uid://dbrxwipmscosm" path="res://Graveyard Assets/character-digger.glb" id="1_nn83m"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
+[ext_resource type="PackedScene" uid="uid://c40ltvluklnk2" path="res://Player/Model.tscn" id="2_q7047"]
 [ext_resource type="Script" path="res://Player/AttackSystem.gd" id="3_t7aj5"]
 [ext_resource type="Script" path="res://Player/DamageLight.gd" id="4_yfimt"]
 
@@ -15,12 +15,12 @@ radius = 0.294901
 [node name="Player" type="Node3D"]
 script = ExtResource("2_fpfru")
 
-[node name="Model" parent="." instance=ExtResource("1_nn83m")]
+[node name="Model" parent="." instance=ExtResource("2_q7047")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19077, 0)
 light_color = Color(0.34902, 0.968627, 0.443137, 1)
-light_energy = 3.0
+light_energy = 2.0
 omni_attenuation = 0.420448
 
 [node name="Camera" type="Camera3D" parent="."]
