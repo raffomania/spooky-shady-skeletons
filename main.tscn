@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="5_g027a"]
 [ext_resource type="AudioStream" uid="uid://bnmn4jq4rtrss" path="res://music_remix.ogg" id="6_1qtdr"]
 [ext_resource type="Script" path="res://UpgradeStation.gd" id="7_1t088"]
-[ext_resource type="PackedScene" uid="uid://bswbmxgcpdwbf" path="res://Graveyard Assets/coffin-old.glb" id="7_nqtgc"]
+[ext_resource type="PackedScene" uid="uid://cjjcopdf8axjd" path="res://Upgrade Station/Upgrade.tscn" id="8_ce70s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2d8so"]
 resource_name = "groundmat"
@@ -50,11 +50,11 @@ environment = SubResource("Environment_lx8fk")
 transform = Transform3D(0.68881, 0, 0.724942, 0, 1, 0, -0.724942, 0, 0.68881, 3.26426, 0, 0)
 script = ExtResource("7_1t088")
 
-[node name="UpgradeA" parent="UpgradeStation" instance=ExtResource("7_nqtgc")]
-transform = Transform3D(0.781149, 0.0140768, -0.624186, -0.0202452, 0.999791, -0.00278873, 0.624016, 0.0148152, 0.781271, 0.875556, 0, -1.16496)
+[node name="Upgrade1" parent="UpgradeStation" instance=ExtResource("8_ce70s")]
+transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, 1.00474, 0, 1.39196)
 
-[node name="UpgradeB" parent="UpgradeStation" instance=ExtResource("7_nqtgc")]
-transform = Transform3D(0.931807, 0.0418949, 0.360526, -0.0231097, 0.998149, -0.0562607, -0.362216, 0.0440925, 0.93105, -0.338825, 0, 0.402946)
+[node name="Upgrade2" parent="UpgradeStation" instance=ExtResource("8_ce70s")]
+transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -5.28518, 0, -3.75076)
 
-[node name="UpgradeC" parent="UpgradeStation" instance=ExtResource("7_nqtgc")]
-transform = Transform3D(0.862816, 0.0166008, -0.505246, -0.0231531, 0.99971, -0.00669153, 0.504988, 0.0174716, 0.862949, 2.52522, 0, 0.150631)
+[node name="Upgrade3" parent="UpgradeStation" instance=ExtResource("8_ce70s")]
+transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -3.86763, -0.0300181, 2.00828)

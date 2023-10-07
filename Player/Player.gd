@@ -17,7 +17,7 @@ var dashing = false
 var movement = Vector3.ZERO
 var current_dash_duration = 0
 var is_dash_possible = true
-var timer
+var timer_dash
 
 #Player Health
 var health_percent: float:
@@ -33,10 +33,12 @@ func _ready():
     # trigger set_health method
     health_percent = 100.0
     $DamageDetector.area_entered.connect(attacked_by_enemy)
+    $DamageDetector.area_entered.connect(enter_upgrade)	
     animation_player = $Model/AnimationPlayer
     animation_player.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
-    timer = get_node("Timer")
-    timer.timeout.connect(enable_dash)
+    timer_dash = get_node("Timer")
+    timer_dash.timeout.connect(enable_dash)
+    
 
 
 func _process(delta: float):
@@ -58,7 +60,7 @@ func _process(delta: float):
             dashing = true
             # disables dash for 2 secs
             is_dash_possible = false
-            timer.start(2)
+            timer_dash.start(2)
 
     position += movement
 
@@ -115,3 +117,8 @@ func set_health(health: float):
 func enable_dash():
     is_dash_possible = true
     print("dash is possible now")
+    
+
+func enter_upgrade(other: Area3D):
+    if other is Upgrade and health_percent > 0 and !dashing:
+        other.start_countdown()
