@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://wkggbceph75q"]
+
+[ext_resource type="Script" path="res://Weapons/Cake/AttackSystem.gd" id="1_qnef0"]
+[ext_resource type="PackedScene" uid="uid://b5rux6f0i4k8x" path="res://Weapons/Cake/cake.tscn" id="2_tp0rw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4yxxp"]
+height = 1.06517
+radius = 2.58585
+
+[node name="CakeWeapon" type="Area3D"]
+script = ExtResource("1_qnef0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355562, 0)
+shape = SubResource("CylinderShape3D_4yxxp")
+
+[node name="cake" parent="." instance=ExtResource("2_tp0rw")]
