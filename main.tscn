@@ -19,12 +19,8 @@ size = Vector2(10, 10)
 [node name="Node3D2" type="Node3D"]
 
 [node name="Enemy" parent="." instance=ExtResource("3_2xni3")]
-<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
-=======
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71599, 0.953328, 2.38419e-07)
->>>>>>> Stashed changes
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_n31m5")]
 
