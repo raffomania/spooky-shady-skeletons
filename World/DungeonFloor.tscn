@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d357h3jwcrfso"]
+
+[ext_resource type="PackedScene" uid="uid://dg5qx8im7qetm" path="res://Assets/Mini Dungeon Assets/floor.glb" id="1_6137i"]
+
+[node name="DungeonFloor" instance=ExtResource("1_6137i")]

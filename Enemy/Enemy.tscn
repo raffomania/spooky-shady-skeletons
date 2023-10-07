@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_y0h1t")
 
 [node name="Enemy" type="Area3D"]
 script = ExtResource("1_5i7qf")
-movement_speed = 1.5
+movement_speed = 0.6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

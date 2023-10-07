@@ -8,12 +8,8 @@ var cake_timer: Timer
 
 func _ready():
     area_entered.connect(on_area_entered)
-    # cake timer should be dependant on global clock ticks
-    cake_timer = Timer.new()
-    cake_timer.one_shot = false
-    cake_timer.timeout.connect(cake_time)
-    add_child(cake_timer)
-    cake_timer.start(4.0)
+
+    GlobalClock.section.connect(cake_time)
 
     $cake.visible = false
 

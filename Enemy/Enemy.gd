@@ -7,22 +7,31 @@ class_name Enemy
 # var camera : Camera3
 @onready var player = get_tree().get_first_node_in_group("player")
 
-# xp that is given to the player on death
+# XP that is given to the player on death
 @export
 var xp: float = 1.0
 
     #Enemy Health
 var enemy_health_percent: float:
     set = set_health
+
+
+func _ready():
+    add_to_group("enemies")
+    GlobalClock.beat.connect(jump)
+    enemy_health_percent = 100.0
+
+
+func jump():
+    var direction = global_position.direction_to(player.global_position)
+    var velocity = direction * movement_speed
+    create_tween().tween_property(self, "position", position + velocity, 0.1)
     
 func _process(delta):
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed * delta
     global_position += velocity
-    
-func _ready():
-    add_to_group("enemies")
-    enemy_health_percent = 100.0
+
     
 func set_health(health: float):
     enemy_health_percent = health

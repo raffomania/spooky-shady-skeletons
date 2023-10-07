@@ -1,35 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://csohnspvb374d"]
+[gd_scene load_steps=9 format=3 uid="uid://csohnspvb374d"]
 
 [ext_resource type="PackedScene" uid="uid://drjl68dym5x1h" path="res://Player/Player.tscn" id="2_n31m5"]
 [ext_resource type="PackedScene" uid="uid://0poibhdax478" path="res://Graveyard Assets/candle.glb" id="3_61fq6"]
-[ext_resource type="Shader" path="res://ground.gdshader" id="3_h6t2i"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="5_g027a"]
-[ext_resource type="AudioStream" uid="uid://db3m4plbd1bxu" path="res://music.ogg" id="6_5stoa"]
-[ext_resource type="Script" path="res://GlobalClock.gd" id="6_m7x7b"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2d8so"]
-resource_name = "groundmat"
-render_priority = 0
-shader = ExtResource("3_h6t2i")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_75m5c"]
-material = SubResource("ShaderMaterial_2d8so")
-size = Vector2(10, 10)
+[ext_resource type="AudioStream" uid="uid://3ktqa0gieguj" path="res://music.wav" id="5_i22ad"]
+[ext_resource type="Script" path="res://UpgradeStation.gd" id="7_1t088"]
+[ext_resource type="Script" path="res://World/WorldGenerator.gd" id="8_bn188"]
+[ext_resource type="PackedScene" uid="uid://cjjcopdf8axjd" path="res://Upgrade Station/Upgrade.tscn" id="8_ce70s"]
 
 [sub_resource type="Environment" id="Environment_lx8fk"]
 background_energy_multiplier = 0.0
-ambient_light_energy = 0.0
+ambient_light_source = 2
+ambient_light_color = Color(0.25098, 0.192157, 0.258824, 1)
+ambient_light_energy = 0.5
 tonemap_mode = 2
-ssao_enabled = true
-glow_enabled = true
 
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_n31m5")]
-
-[node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("PlaneMesh_75m5c")
 
 [node name="candle" parent="." instance=ExtResource("3_61fq6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837571, 0, -0.847464)
@@ -39,13 +27,24 @@ script = ExtResource("5_g027a")
 spawn_count = 2
 spawn_freq = 8
 
-[node name="GlobalClock" type="Node" parent="."]
-script = ExtResource("6_m7x7b")
-beats_per_minute = 154
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("8_bn188")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_5stoa")
-autoplay = true
+stream = ExtResource("5_i22ad")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lx8fk")
+
+[node name="UpgradeStation" type="Node3D" parent="."]
+transform = Transform3D(0.68881, 0, 0.724942, 0, 1, 0, -0.724942, 0, 0.68881, 3.26426, 0, 0)
+script = ExtResource("7_1t088")
+
+[node name="Upgrade1" parent="UpgradeStation" instance=ExtResource("8_ce70s")]
+transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, 1.00474, 0, 1.39196)
+
+[node name="Upgrade2" parent="UpgradeStation" instance=ExtResource("8_ce70s")]
+transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -5.28518, 0, -3.75076)
+
+[node name="Upgrade3" parent="UpgradeStation" instance=ExtResource("8_ce70s")]
+transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -3.86763, -0.0300181, 2.00828)
