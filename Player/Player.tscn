@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://drjl68dym5x1h"]
+[gd_scene load_steps=10 format=3 uid="uid://drjl68dym5x1h"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
 [ext_resource type="PackedScene" uid="uid://c40ltvluklnk2" path="res://Player/Model.tscn" id="2_q7047"]
-[ext_resource type="PackedScene" uid="uid://wkggbceph75q" path="res://Weapons/cake_weapon.tscn" id="3_xb6cu"]
+[ext_resource type="PackedScene" uid="uid://wkggbceph75q" path="res://Weapons/Cake/cake_weapon.tscn" id="3_xb6cu"]
 [ext_resource type="Script" path="res://Player/DamageLight.gd" id="4_yfimt"]
+[ext_resource type="PackedScene" uid="uid://dn7ty60mgkdpu" path="res://Weapons/Burger/Burger.tscn" id="5_0sblv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_svnhw"]
 radius = 0.294901
@@ -76,3 +77,5 @@ draw_pass_1 = SubResource("QuadMesh_4y2ji")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Area3D" parent="." instance=ExtResource("5_0sblv")]
