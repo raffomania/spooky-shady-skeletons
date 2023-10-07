@@ -1,13 +1,13 @@
 extends Node
-@export
 
+@export
+# spooky scary skeletons has 154 (maybe 155) bpm
 var beats_per_minute : int
 
 var seconds_between_clock_ticks: float
 var seconds_since_last_clock_tick : float
 
 func clock_tick():
-    # print_debug("tick")
     GlobalSignals.emit_signal("global_clock_tick")
 
 
