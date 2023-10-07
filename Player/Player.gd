@@ -22,6 +22,7 @@ var health_percent: float:
 	
 # Player xp
 var xp: float = 0.0
+var level: int = 1
 
 var animation_player: AnimationPlayer
 
@@ -69,11 +70,26 @@ func attacked_by_enemy(other: Area3D):
 		$DamageLight.flash()
 
 func kill_enemy(other: Area3D):
-	xp += other.xp
-	$XPParticles.restart()
-	$XPParticles.amount = 10 * other.xp
-	$XPParticles.emitting = true
+	add_xp(other.xp)
 	other.queue_free()
+	
+func add_xp(amount: float):
+	xp += amount
+
+	var current_level = round(log(xp))
+	if current_level > level:
+		level_up(current_level)
+
+	# reset particle emitter since it is oneshot
+	$XPParticles.restart()
+	# scale particle amount with xp amount
+	$XPParticles.amount = 10 * amount
+	$XPParticles.emitting = true
+	
+func level_up(new_level: int):
+	level = new_level
+	print('level up: ', new_level)
+
 	
 func set_health(health: float):
 	health_percent = health
