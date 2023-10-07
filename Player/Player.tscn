@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://drjl68dym5x1h"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
-[ext_resource type="PackedScene" path="res://Player/Model.tscn" id="2_q7047"]
+[ext_resource type="PackedScene" uid="uid://c40ltvluklnk2" path="res://Player/Model.tscn" id="2_q7047"]
 [ext_resource type="PackedScene" uid="uid://wkggbceph75q" path="res://Weapons/Cake/cake_weapon.tscn" id="3_xb6cu"]
 [ext_resource type="Script" path="res://Player/DamageLight.gd" id="4_yfimt"]
 [ext_resource type="PackedScene" uid="uid://dn7ty60mgkdpu" path="res://Weapons/Burger/Burger.tscn" id="5_0sblv"]

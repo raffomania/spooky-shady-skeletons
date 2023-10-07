@@ -5,7 +5,7 @@ var damage : int # percent damage per attack
 
 var timer: Timer
 
-var movement: Vector3 = Vector3.LEFT.rotated(Vector3(0,1,0), PI / 4)
+var movement: Vector3 = Vector3.LEFT.rotated(Vector3.UP, PI / 4)
 
 var speed: float = 5.0
 
@@ -30,11 +30,11 @@ func on_area_entered(other: Area3D):
 
 
 func reverse():
-    if position.distance_to(Vector3.ZERO) < 0.1:
+
+    if position.distance_to(Vector3.ZERO) < 0.2:
+        print("reset direction ", $"../")
         var player_movement = $"../".movement
         if (player_movement != Vector3.ZERO):
-            movement = player_movement
-            print("player ", player_movement)
-    
-    movement = movement.rotated(Vector3(0,1,0), PI)
-    print("move ", movement)
+            movement = player_movement.normalized()
+    else:
+        movement = movement.rotated(Vector3.UP, PI)
