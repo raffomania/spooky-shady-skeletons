@@ -18,4 +18,3 @@ func _process(delta):
 
 func _ready():
     add_to_group("enemies")
-
