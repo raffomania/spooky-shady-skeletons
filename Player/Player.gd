@@ -75,7 +75,7 @@ func _process(delta: float):
 
 
 func attacked_by_enemy(other: Area3D):
-	if other is Enemy and health_percent > 0:
+	if other is Enemy and health_percent > 0 and !dashing:
 		kill_enemy(other)
 		health_percent -= 5.0
 		$DamageLight.flash()
