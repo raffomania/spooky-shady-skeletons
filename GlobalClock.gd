@@ -1,7 +1,7 @@
 extends Node
 
 # spooky scary skeletons remix has 128 bpm
-var beats_per_minute := 128
+var beats_per_minute := 127
 
 var beat_duration := 60.0 / beats_per_minute
 

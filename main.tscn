@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drjl68dym5x1h" path="res://Player/Player.tscn" id="2_n31m5"]
 [ext_resource type="PackedScene" uid="uid://0poibhdax478" path="res://Graveyard Assets/candle.glb" id="3_61fq6"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="5_g027a"]
-[ext_resource type="AudioStream" uid="uid://bnmn4jq4rtrss" path="res://music_remix.ogg" id="6_1qtdr"]
+[ext_resource type="AudioStream" uid="uid://3ktqa0gieguj" path="res://music.wav" id="5_i22ad"]
 [ext_resource type="Script" path="res://UpgradeStation.gd" id="7_1t088"]
 [ext_resource type="Script" path="res://World/WorldGenerator.gd" id="8_bn188"]
 [ext_resource type="PackedScene" uid="uid://cjjcopdf8axjd" path="res://Upgrade Station/Upgrade.tscn" id="8_ce70s"]
@@ -29,7 +29,7 @@ spawn_freq = 8
 script = ExtResource("8_bn188")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_1qtdr")
+stream = ExtResource("5_i22ad")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lx8fk")
