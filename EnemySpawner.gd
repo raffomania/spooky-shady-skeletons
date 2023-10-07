@@ -3,8 +3,8 @@ extends Node
 @export
 var spawn_count : int
 
-@export 
-var spawn_freq : int 
+@export
+var spawn_freq : int
 
 var clock_ticks_since_last_spawn : int
 var enemy_scene : Resource
@@ -36,6 +36,6 @@ func spawn():
 		enemy.position.x += x_offset
 		enemy.position.z += z_offset
 		add_child(enemy)
-		
+
 	print("spawned %s enemies" % spawn_count)
 	clock_ticks_since_last_spawn = 0

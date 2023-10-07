@@ -24,7 +24,7 @@ func _process(delta):
 
 func on_area_entered(other: Area3D):
 	if other is Enemy and $cake.visible:
-		other.queue_free()	
+		other.queue_free()
 
 
 func cake_time():

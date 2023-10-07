@@ -22,7 +22,7 @@ var timer
 #Player Health
 var health_percent: float:
 	set = set_health
-	
+
 # Player xp
 var xp: float = 0.0
 var level: int = 1
@@ -37,7 +37,7 @@ func _ready():
 	animation_player.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
 	timer = get_node("Timer")
 	timer.timeout.connect(enable_dash)
-	
+
 
 func _process(delta: float):
 	if (Input.get_action_strength("quit")):
@@ -61,9 +61,9 @@ func _process(delta: float):
 			timer.start(2)
 
 	position += movement
-	
+
 	if (movement.length() > 0):
-		$'Model'.look_at(transform.origin + movement, Vector3.UP, true) 
+		$'Model'.look_at(transform.origin + movement, Vector3.UP, true)
 
 	# Select animation that should be playing
 	if dashing:
@@ -83,7 +83,7 @@ func attacked_by_enemy(other: Area3D):
 func kill_enemy(other: Area3D):
 	add_xp(other.xp)
 	other.queue_free()
-	
+
 func add_xp(amount: float):
 	xp += amount
 
@@ -96,14 +96,14 @@ func add_xp(amount: float):
 	# scale particle amount with xp amount
 	$XPParticles.amount = 10 * amount
 	$XPParticles.emitting = true
-	
+
 
 func level_up(new_level: int):
 	level = new_level
 	GlobalSignals.level_up.emit()
 	print('level up: ', new_level)
 
-	
+
 func set_health(health: float):
 	health_percent = health
 	$HealthLight.spot_angle = 10 + 65 * (health_percent / 100.0)
@@ -115,8 +115,8 @@ func set_health(health: float):
 func enable_dash():
 	is_dash_possible = true
 	print("dash is possible now")
-	
-	
-	
-	
-	
+
+
+
+
+
