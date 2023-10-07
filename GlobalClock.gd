@@ -17,7 +17,8 @@ var beats = 0
 var time_begin
 var time_delay
 var next_beat_time := 0.0
-var previous_beat_time: float
+var previous_beat_time: float = 0.0
+var previous_bar_time: float = 0.0
 
 # From 0 to 1, indicates how far along we are until
 # the next beat arrives.
@@ -26,6 +27,14 @@ var previous_beat_time: float
 # 0.99: a beat is about to happen
 # 1: Beat is now
 var beat_progress
+
+# From 0 to 1, indicates how far along we are until
+# the next bar arrives.
+# 0: a 4/4 bar just finished
+# 0.75: 3 bars in
+# 0.99: a beat is about to happen
+# 1: A 4/4 bar is done and a new one starts
+var bar_progress
 
 func _ready():
     time_begin = Time.get_ticks_usec()
@@ -41,6 +50,9 @@ func _process(_delta):
     # May be below 0 (did not begin yet).
     time = max(0, time)
     beat_progress = (time - previous_beat_time) / beat_duration
+    # TODO: @Rafael The very first bar ends at the third beat. Couldn't fid out why
+    bar_progress = (time - previous_bar_time) / (beat_duration * 4)
+    print("bar progress %f" % bar_progress)
     if time >= next_beat_time:
         emit_beat()
 
@@ -49,9 +61,10 @@ func emit_beat():
     beats += 1
     previous_beat_time = next_beat_time
     next_beat_time = beats * beat_duration
-    emit_signal("beat")
-    print("beat ", beats)
+    beat.emit()
+    print("beat %d" % beats)
     if beats % 4 == 0:
         bar.emit()
+        previous_bar_time = next_beat_time - beat_duration
     if beats % 16 == 0:
         section.emit()

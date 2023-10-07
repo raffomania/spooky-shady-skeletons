@@ -5,9 +5,6 @@ extends Area3D
 # Enemy damage in percent
 @export var damage: float
 
-# The burger does one back and forth every music bar.
-# This value resets via a signal every time a bar finishes.
-var time_since_last_bar: float = 0.0
 # The direction into which the burger is flying right now.
 var direction: Vector3 = Vector3(1, 0, 0)
 # The max distance the burger flies away from the player
@@ -27,13 +24,8 @@ func _ready():
     # Register our hit handler
     area_entered.connect(on_area_entered)
 
-func _process(delta):
-    # Increase the timer
-    time_since_last_bar += delta
-
-    # Determine how far we're in the current bar
-    var bar_progress = time_since_last_bar / (GlobalClock.beat_duration * 4)
-
+func _process(_delta):
+    var bar_progress = GlobalClock.bar_progress
     # Rotate the burger twice each bar
     self.rotate_y(2 * bar_progress * 2 * PI)
 
@@ -42,9 +34,7 @@ func _process(delta):
     # It get's faster, reaches a "velocity" of 0 at the max distance
     # and comes back.
     var sin_position = sin(bar_progress * PI)
-    print("Bar progress %f, sin_position: %f" % [bar_progress, sin_position])
     self.position = direction.normalized() * sin_position * max_distance
-    print("Position Vector: %f, %f, %f" % [self.position.x, self.position.y, self.position.z])
 
 
 func on_area_entered(other: Area3D):
@@ -54,9 +44,6 @@ func on_area_entered(other: Area3D):
 
 # The Burger is now back on top of the player
 func bar_finished():
-    # Reset the timer to keep the timer in sync
-    time_since_last_bar = 0.0
-
     # Reset the max distance to the default
     max_distance = default_distance
 
