@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://csohnspvb374d"]
+[gd_scene load_steps=10 format=3 uid="uid://csohnspvb374d"]
 
 [ext_resource type="PackedScene" uid="uid://drjl68dym5x1h" path="res://Player/Player.tscn" id="2_n31m5"]
 [ext_resource type="PackedScene" uid="uid://0poibhdax478" path="res://Graveyard Assets/candle.glb" id="3_61fq6"]
@@ -15,6 +15,11 @@ shader = ExtResource("3_h6t2i")
 [sub_resource type="PlaneMesh" id="PlaneMesh_75m5c"]
 material = SubResource("ShaderMaterial_2d8so")
 size = Vector2(10, 10)
+
+[sub_resource type="Environment" id="Environment_lx8fk"]
+background_energy_multiplier = 0.0
+ambient_light_energy = 0.0
+tonemap_mode = 2
 
 [node name="Main" type="Node3D"]
 
@@ -39,3 +44,6 @@ beats_per_minute = 154
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_5stoa")
 autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lx8fk")

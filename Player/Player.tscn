@@ -17,11 +17,14 @@ script = ExtResource("2_fpfru")
 
 [node name="Model" parent="." instance=ExtResource("2_q7047")]
 
-[node name="HealthLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19077, 0)
+[node name="HealthLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.72942, 0)
 light_color = Color(0.34902, 0.968627, 0.443137, 1)
 light_energy = 2.0
-omni_attenuation = 0.420448
+spot_range = 20.0
+spot_attenuation = 0.366022
+spot_angle = 75.0
+spot_angle_attenuation = 1.86606
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 5, 3)

@@ -74,7 +74,7 @@ func kill_enemy(other: Area3D):
 	
 func set_health(health: float):
 	health_percent = health
-	$HealthLight.omni_range = health / 8.0
+	$HealthLight.spot_angle = 10 + 75 * (health_percent / 100.0)
 	if health_percent <= 0:
 		animation_player.play("die")
 		# stop accepting player input
