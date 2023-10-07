@@ -7,12 +7,14 @@ var spawn_count : int
 var spawn_freq : int
 
 var enemy_scene : Resource
+var pumpkin_scene : Resource
 var is_upgrading := false
 
 var rng = RandomNumberGenerator.new()
 
 func _ready():
     enemy_scene = preload("res://Enemy/Enemy.tscn")
+    pumpkin_scene = preload("res://Enemy/pumpkin.tscn")
     GlobalSignals.level_up.connect(on_level_up)
     GlobalClock.bar.connect(spawn)
 

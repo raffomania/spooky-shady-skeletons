@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c26uhm02pdxod"]
+
+[ext_resource type="Script" path="res://Enemy/Pumpkin.gd" id="1_rtf6g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g33ew"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h8ana"]
+radius = 1.25
+
+[node name="Pumpkin" type="Area3D"]
+script = ExtResource("1_rtf6g")
+movement_speed = 0.4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_g33ew")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_h8ana")
