@@ -34,6 +34,8 @@ func _ready():
 	animation_player.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
 
 func _process(delta: float):
+	if (Input.get_action_strength("quit")):
+		get_tree().quit()
 	if (current_dash_duration >= dash_duration):
 		dashing = false
 		current_dash_duration = 0
