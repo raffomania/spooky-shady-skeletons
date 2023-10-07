@@ -29,6 +29,8 @@ func on_area_entered(other: Area3D):
 
 func cake_time():
 	$cake.visible = true
+	$cake.position.y = 10
+	create_tween().tween_property($cake, "position", Vector3.ZERO, 0.2)
 	for other in get_overlapping_areas():
 		if other is Enemy:
 			other.queue_free()

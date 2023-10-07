@@ -104,7 +104,7 @@ func level_up(new_level: int):
 	
 func set_health(health: float):
 	health_percent = health
-	$HealthLight.spot_angle = 10 + 75 * (health_percent / 100.0)
+	$HealthLight.spot_angle = 10 + 65 * (health_percent / 100.0)
 	if health_percent <= 0:
 		animation_player.play("die")
 		# stop accepting player input
