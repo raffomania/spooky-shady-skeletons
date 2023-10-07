@@ -32,7 +32,7 @@ func jump():
 # Set the health for this enemy.
 func take_damage(damage: int):
     health -= damage
-    print("Took %d damage. Health now: %d" % [damage, health])
+    #print("Took %d damage. Health now: %d" % [damage, health])
 
     if health <= 0:
         queue_free()
