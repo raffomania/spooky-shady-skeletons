@@ -17,6 +17,7 @@ script = ExtResource("2_fpfru")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19077, 0)
 light_color = Color(0.117647, 0.972549, 0.243137, 1)
 light_energy = 3.0
+omni_attenuation = 0.420448
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2.27592, 2.95304, 1.87542)

@@ -10,7 +10,7 @@ func enemy_entered(node: Node3D):
 	#check if node is enemy
 	if (node is Enemy):
 		attackable_enemies.append(node)
-		print_debug(node.name)
+		# print_debug(node.name)
 
 
 func _ready():

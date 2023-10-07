@@ -13,7 +13,12 @@ var movement = Vector3.ZERO
 var current_dash_duration = 0
 
 #Player Health
-var health_percent = 100
+var health_percent: float:
+	set = set_health
+
+func _ready():
+	# trigger set_health method
+	health_percent = 100.0
 
 func _process(delta: float):
 	if (current_dash_duration >= dash_duration):
@@ -37,6 +42,7 @@ func _process(delta: float):
 		$'Model'.look_at(transform.origin + movement, Vector3.UP, true) 
 
 	
-func set_health(health: int):
+func set_health(health: float):
+	print("set")
 	health_percent = health
-	$OmniLight3D.omni_range = health / 10.0
+	$OmniLight3D.omni_range = health / 8.0
