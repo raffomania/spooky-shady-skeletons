@@ -48,27 +48,22 @@ func bar_finished():
     max_distance = default_distance
 
     # We have a game mechanic that allows the player to adjust the burger direction
-    # if the player runs in the oposite left/right direction the burger is coming from.
-    # I.e if the burger comes back from the right side (flies to the left) and the player
-    # currently moves right (right-up/right/right-down), the burger changes to the player movement direction.
+    # if the player runs in roughly the opposite left/right direction the burger is coming from.
     #
-    # Also, if the player
+    # Also, if the player runs nearly exact opposite direction, the burger get's a power boost.
     #
     # However, the "left/right" is not the left right from the grid, but rather the 45degree rotated view from the camera.
     # To be able to have a simple "left/right" comparison, we have to rotate both vectors back to align to them to the grid.
-    var player_direction = player.movement_direction.rotated(Vector3.UP, -PI / 4)
-    var burger_direction = self.direction.rotated(Vector3.UP, -PI / 4)
-
-    if player_direction.is_zero_approx():
+    if self.player.movement_direction.is_zero_approx():
         # If the player is not moving, reverse the direction
         direction = direction * -1
-    elif burger_direction.angle_to(player_direction) < 0.2:
+    elif rad_to_deg(self.direction.angle_to(player.movement_direction)) < 11:
         # Give the burger a boost, if the player looks at nearly the exact opposite direction of the burger
-        direction = player.movement_direction.normalized()
+        direction = player.movement_direction
         max_distance = power_distance
-    elif burger_direction.x > 0 && player_direction.x > 0 || burger_direction.x < 0 && player_direction.x < 0:
+    elif rad_to_deg(self.direction.angle_to(player.movement_direction)) < 91:
         # Change direction, if the player shows in the opposite x direction as the burger.
-        direction = player.movement_direction.normalized()
+        direction = player.movement_direction
     else:
         # By default, reverse the direction
         direction = direction * -1
