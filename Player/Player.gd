@@ -70,6 +70,7 @@ func attacked_by_enemy(other: Area3D):
 
 func kill_enemy(other: Area3D):
 	xp += other.xp
+	$XPParticles.emitting = true
 	other.queue_free()
 	
 func set_health(health: float):
