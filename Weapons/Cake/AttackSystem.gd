@@ -17,16 +17,12 @@ func _ready():
 func _process(delta):
     $cake.rotate_y(delta * 4)
     
-func take_damage(enemy: Enemy):
+func make_damage(enemy: Enemy):
     enemy.enemy_health_percent -= damage
-        #animation_enemy.play("age")dam
-    if enemy.enemy_health_percent <= 0:
-        print_debug("free")
-        enemy.queue_free()
 
 func on_area_entered(other: Area3D):
     if other is Enemy and $cake.visible:
-        take_damage(other)
+        make_damage(other)
 
 func cake_time():
     $cake.visible = true
@@ -34,6 +30,6 @@ func cake_time():
     create_tween().tween_property($cake, "position", Vector3.ZERO, 0.2)
     for other in get_overlapping_areas():
         if other is Enemy:
-            take_damage(other)
+            make_damage(other)
     await get_tree().create_timer(.5).timeout
     $cake.visible = false

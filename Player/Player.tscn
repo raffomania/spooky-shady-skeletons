@@ -49,6 +49,7 @@ current = true
 size = 10.0
 
 [node name="CakeWeapon" parent="." instance=ExtResource("3_xb6cu")]
+visible = false
 damage = 50.0
 
 [node name="DamageDetector" type="Area3D" parent="."]
@@ -79,4 +80,5 @@ draw_pass_1 = SubResource("QuadMesh_4y2ji")
 wait_time = 2.0
 one_shot = true
 
-[node name="Area3D" parent="." instance=ExtResource("5_0sblv")]
+[node name="Burger" parent="." instance=ExtResource("5_0sblv")]
+damage = 50.0
