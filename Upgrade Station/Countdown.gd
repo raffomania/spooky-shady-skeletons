@@ -7,6 +7,6 @@ func show_countdown():
     var countdown_text = "Zzz... "
     for c in countdown_text.length():
         text += countdown_text[c]
-        await GlobalSignals.global_clock_tick
+        await GlobalClock.beat
         
     
