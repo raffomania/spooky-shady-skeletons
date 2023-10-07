@@ -54,9 +54,7 @@ func generate_map():
     # Generate a 100*100 tile grid plane around the world center.
     var lower_boundary = int(floor(-world_size/2.0))
     var upper_boundary = int(floor(world_size/2.0)) + 1
-    print("World boundaries: %d-%d" % [lower_boundary, upper_boundary])
     for x in range(lower_boundary, upper_boundary):
-        print("Generate x [0-50]" % [x])
         for z in range(lower_boundary, upper_boundary):
             # Create a detailed tile every so often
             var tile_resource: Node3D
