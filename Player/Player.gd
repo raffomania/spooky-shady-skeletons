@@ -62,7 +62,7 @@ func _process(delta: float):
 func attacked_by_enemy(other: Area3D):
 	if other.is_in_group("enemies") and health_percent > 0:
 		other.queue_free()
-		health_percent -= 50.0
+		health_percent -= 5.0
 		$DamageLight.flash()
 	
 func set_health(health: float):
