@@ -2,7 +2,7 @@ extends Area3D
 class_name Enemy
 
 #movement noch vo player geschwindigkeit abhängig machen
-@export var movement_speed= 10.0
+@export var movement_speed: float
 
 # var camera : Camera3
 @onready var player = get_tree().get_first_node_in_group("player")

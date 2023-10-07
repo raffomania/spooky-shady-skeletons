@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://drjl68dym5x1h"]
+[gd_scene load_steps=11 format=3 uid="uid://drjl68dym5x1h"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
 [ext_resource type="PackedScene" uid="uid://c40ltvluklnk2" path="res://Player/Model.tscn" id="2_q7047"]
 [ext_resource type="Script" path="res://Player/AttackSystem.gd" id="3_t7aj5"]
+[ext_resource type="PackedScene" uid="uid://blsmina83rmax" path="res://Food Assets/cakeBirthday.glb" id="4_dt8eb"]
 [ext_resource type="Script" path="res://Player/DamageLight.gd" id="4_yfimt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4yxxp"]
-height = 0.781083
-radius = 1.75126
+height = 1.06517
+radius = 2.58585
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_svnhw"]
 radius = 0.294901
@@ -51,8 +52,53 @@ size = 10.0
 script = ExtResource("3_t7aj5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackSystem"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.534362, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355562, 0)
 shape = SubResource("CylinderShape3D_4yxxp")
+
+[node name="cake" parent="AttackSystem" instance=ExtResource("4_dt8eb")]
+transform = Transform3D(6, 0, 0, 0, 1.99239, -0.522934, 0, 0.174311, 5.97717, 0, 0.17608, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="AttackSystem/cake"]
+transform = Transform3D(0.166667, 0, 0, 0, 0.5, 0, 0, 1.86265e-09, 0.166667, 0.219603, 0.40598, -0.0118396)
+light_color = Color(1, 0.843137, 0.568627, 1)
+light_energy = 0.5
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="AttackSystem/cake"]
+transform = Transform3D(0.166667, 0, 0, 0, 0.5, 0, 0, 1.86265e-09, 0.166667, 0.112995, 0.358201, -0.193881)
+light_color = Color(1, 0.843137, 0.568627, 1)
+light_energy = 0.5
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="AttackSystem/cake"]
+transform = Transform3D(0.166667, 0, 0, 0, 0.5, 0, 0, 1.86265e-09, 0.166667, -0.100686, 0.358923, -0.191128)
+light_color = Color(1, 0.843137, 0.568627, 1)
+light_energy = 0.5
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="AttackSystem/cake"]
+transform = Transform3D(0.166667, 0, 0, 0, 0.5, 0, 0, 1.86265e-09, 0.166667, -0.201051, 0.406438, -0.0100942)
+light_color = Color(1, 0.843137, 0.568627, 1)
+light_energy = 0.5
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="AttackSystem/cake"]
+transform = Transform3D(0.166667, 0, 0, 0, 0.5, 0, 0, 1.86265e-09, 0.166667, -0.0304424, 0.452316, 0.164701)
+light_color = Color(1, 0.843137, 0.568627, 1)
+light_energy = 0.5
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="AttackSystem/cake"]
+transform = Transform3D(0.166667, 0, 0, 0, 0.5, 0, 0, 1.86265e-09, 0.166667, 0.152946, 0.451541, 0.161747)
+light_color = Color(1, 0.843137, 0.568627, 1)
+light_energy = 0.5
+omni_range = 3.0
+omni_attenuation = 2.0
 
 [node name="DamageDetector" type="Area3D" parent="."]
 
