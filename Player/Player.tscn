@@ -123,3 +123,6 @@ randomness = 0.09
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_s45c8")
 draw_pass_1 = SubResource("QuadMesh_4y2ji")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

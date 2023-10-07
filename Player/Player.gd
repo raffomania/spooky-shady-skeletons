@@ -12,9 +12,12 @@ var dash_duration: float = 0.25
 @export
 var movement_speed: float = 2
 
+# dashing
 var dashing = false
 var movement = Vector3.ZERO
 var current_dash_duration = 0
+var is_dash_possible = true
+var timer
 
 #Player Health
 var health_percent: float:
@@ -32,6 +35,9 @@ func _ready():
 	$DamageDetector.area_entered.connect(attacked_by_enemy)
 	animation_player = $Model/AnimationPlayer
 	animation_player.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
+	timer = get_node("Timer")
+	timer.timeout.connect(enable_dash)
+	
 
 func _process(delta: float):
 	if (Input.get_action_strength("quit")):
@@ -47,9 +53,12 @@ func _process(delta: float):
 		var z = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		movement = Vector3(x, 0, z).rotated(Vector3.UP, PI / 4).normalized() * delta * movement_speed
 
-		if (Input.get_action_strength("dash") and movement != Vector3.ZERO):
+		if (Input.get_action_strength("dash") and movement != Vector3.ZERO and is_dash_possible):
 			movement *= dash_speed_multiplier
 			dashing = true
+			# disables dash for 2 secs
+			is_dash_possible = false
+			timer.start(2)
 
 	position += movement
 	
@@ -100,3 +109,12 @@ func set_health(health: float):
 		animation_player.play("die")
 		# stop accepting player input
 		set_process(false)
+
+func enable_dash():
+	is_dash_possible = true
+	print("dash is possible now")
+	
+	
+	
+	
+	
