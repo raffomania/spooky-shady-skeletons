@@ -70,6 +70,8 @@ func attacked_by_enemy(other: Area3D):
 
 func kill_enemy(other: Area3D):
 	xp += other.xp
+	$XPParticles.restart()
+	$XPParticles.amount = 10 * other.xp
 	$XPParticles.emitting = true
 	other.queue_free()
 	
