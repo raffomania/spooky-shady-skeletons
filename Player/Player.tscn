@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://drjl68dym5x1h"]
+[gd_scene load_steps=11 format=3 uid="uid://drjl68dym5x1h"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
 [ext_resource type="PackedScene" uid="uid://c40ltvluklnk2" path="res://Player/Model.tscn" id="2_q7047"]
 [ext_resource type="PackedScene" uid="uid://wkggbceph75q" path="res://Weapons/Cake/cake_weapon.tscn" id="3_xb6cu"]
 [ext_resource type="Script" path="res://Player/DamageLight.gd" id="4_yfimt"]
 [ext_resource type="PackedScene" uid="uid://dn7ty60mgkdpu" path="res://Weapons/Burger/Burger.tscn" id="5_0sblv"]
+[ext_resource type="PackedScene" uid="uid://bt424qtt00s1a" path="res://Weapons/Donut/Donut.tscn" id="6_u2y65"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_svnhw"]
 radius = 0.294901
@@ -81,3 +82,5 @@ one_shot = true
 
 [node name="Burger" parent="." instance=ExtResource("5_0sblv")]
 damage = 50
+
+[node name="Donut" parent="." instance=ExtResource("6_u2y65")]
