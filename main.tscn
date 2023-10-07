@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://csohnspvb374d"]
+[gd_scene load_steps=8 format=3 uid="uid://csohnspvb374d"]
 
 [ext_resource type="PackedScene" uid="uid://drjl68dym5x1h" path="res://Player/Player.tscn" id="2_n31m5"]
-[ext_resource type="PackedScene" uid="uid://br81rul46txb4" path="res://Enemy/Enemy.tscn" id="3_2xni3"]
 [ext_resource type="PackedScene" uid="uid://0poibhdax478" path="res://Graveyard Assets/candle.glb" id="3_61fq6"]
 [ext_resource type="Shader" path="res://ground.gdshader" id="3_h6t2i"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="5_g027a"]
@@ -17,10 +16,6 @@ material = SubResource("ShaderMaterial_2d8so")
 size = Vector2(10, 10)
 
 [node name="Node3D2" type="Node3D"]
-
-[node name="Enemy" parent="." instance=ExtResource("3_2xni3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-visible = false
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_n31m5")]
 
