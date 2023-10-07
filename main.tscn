@@ -15,7 +15,7 @@ shader = ExtResource("3_h6t2i")
 material = SubResource("ShaderMaterial_2d8so")
 size = Vector2(10, 10)
 
-[node name="Node3D2" type="Node3D"]
+[node name="Main" type="Node3D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_n31m5")]
 
