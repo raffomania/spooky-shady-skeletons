@@ -16,7 +16,7 @@ func _ready():
 
 func _process(delta):
     $cake.rotate_y(delta * 4)
-    
+
 func make_damage(enemy: Enemy):
     enemy.enemy_health_percent -= damage
 
