@@ -48,9 +48,14 @@ func _process(delta: float):
     else:
         var x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
         var z = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-        movement = Vector3(x, 0, z).rotated(Vector3.UP, PI / 4).normalized() * delta * movement_speed
-        # Save the normalized movement direction, since this is important for some weapons.
-        movement_direction = movement
+        if x != 0 || z != 0:
+            # Save the movement direction, since this is important for some weapons.
+            movement_direction = Vector3(x, 0, z).rotated(Vector3.UP, PI / 4).normalized()
+            movement = movement_direction * delta * movement_speed
+        else:
+            # Save the movement direction, since this is important for some weapons.
+            movement_direction = Vector3(0, 0, 0)
+            movement = movement_direction
 
         if (Input.get_action_strength("dash") and movement != Vector3.ZERO and is_dash_possible):
             movement *= dash_speed_multiplier
