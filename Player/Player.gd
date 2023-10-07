@@ -1,22 +1,18 @@
 extends Node3D
+class_name Player
 
 # Speed multiplier during the dash
-@export
-var dash_speed_multiplier: float = 4
-
+@export var dash_speed_multiplier: float = 4
 # Dash duration in seconds
-@export
-var dash_duration: float = 0.25
-
+@export var dash_duration: float = 0.25
 # Base movement speed
-@export
-var movement_speed: float = 2
+@export var movement_speed: float = 2
 
-# dashing
-var dashing = false
-var movement = Vector3.ZERO
-var current_dash_duration = 0
-var is_dash_possible = true
+var dashing: bool = false
+var movement: Vector3 = Vector3.ZERO
+var movement_direction: Vector3 = Vector3(0, 0, 0)
+var current_dash_duration: float = 0
+var is_dash_possible: bool = true
 var timer_dash
 
 #Player Health
@@ -33,11 +29,12 @@ func _ready():
     # trigger set_health method
     health_percent = 100.0
     $DamageDetector.area_entered.connect(attacked_by_enemy)
-    $DamageDetector.area_entered.connect(enter_upgrade)	
+    $DamageDetector.area_entered.connect(enter_upgrade)
     animation_player = $Model/AnimationPlayer
     animation_player.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
     timer_dash = get_node("Timer")
     timer_dash.timeout.connect(enable_dash)
+
 
 func _process(delta: float):
     if (Input.get_action_strength("quit")):
@@ -52,6 +49,8 @@ func _process(delta: float):
         var x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
         var z = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
         movement = Vector3(x, 0, z).rotated(Vector3.UP, PI / 4).normalized() * delta * movement_speed
+        # Save the normalized movement direction, since this is important for some weapons.
+        movement_direction = movement
 
         if (Input.get_action_strength("dash") and movement != Vector3.ZERO and is_dash_possible):
             movement *= dash_speed_multiplier
@@ -76,21 +75,14 @@ func _process(delta: float):
 
 func attacked_by_enemy(other: Area3D):
     if other is Enemy and health_percent > 0 and !dashing:
-        damage_enemy(other)
+        kill_enemy(other)
         health_percent -= 5.0
         $DamageLight.flash()
 
-func damage_enemy(other: Enemy):
-    if other.enemy_health_percent < 5.0:
-        kill_enemy(other)
-    else: 
-        other.enemy_health_percent -= 5.0
-        #enemy_animation("die")
-        
 func kill_enemy(other: Area3D):
     add_xp(other.xp)
     other.queue_free()
-    
+
 func add_xp(amount: float):
     xp += amount
 
@@ -104,10 +96,12 @@ func add_xp(amount: float):
     $XPParticles.amount = 10 * amount
     $XPParticles.emitting = true
 
+
 func level_up(new_level: int):
     level = new_level
     GlobalSignals.level_up.emit()
     print('level up: ', new_level)
+
 
 func set_health(health: float):
     health_percent = health
@@ -120,7 +114,7 @@ func set_health(health: float):
 func enable_dash():
     is_dash_possible = true
     print("dash is possible now")
-    
+
 
 func enter_upgrade(other: Area3D):
     if other is Upgrade and health_percent > 0 and !dashing:

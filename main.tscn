@@ -18,6 +18,9 @@ tonemap_mode = 2
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_n31m5")]
+dash_speed_multiplier = null
+dash_duration = null
+movement_speed = null
 
 [node name="candle" parent="." instance=ExtResource("3_61fq6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837571, 0, -0.847464)

@@ -1,8 +1,7 @@
 extends Node
 
-# spooky scary skeletons remix has 128 bpm
+# Spooky song has 127 bpm
 var beats_per_minute := 127
-
 var beat_duration := 60.0 / beats_per_minute
 
 # beats are the smallest rhythm unit, each time
@@ -33,6 +32,7 @@ func _ready():
     time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
     get_tree().get_root().get_node("/root/Main/AudioStreamPlayer").play()
 
+
 func _process(_delta):
     # Obtain from ticks.
     var time = (Time.get_ticks_usec() - time_begin) / 1_000_000.0
@@ -55,4 +55,3 @@ func emit_beat():
         bar.emit()
     if beats % 16 == 0:
         section.emit()
-
