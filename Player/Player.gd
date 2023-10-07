@@ -19,6 +19,9 @@ var current_dash_duration = 0
 #Player Health
 var health_percent: float:
 	set = set_health
+	
+# Player xp
+var xp: float = 0.0
 
 var animation_player: AnimationPlayer
 
@@ -61,9 +64,13 @@ func _process(delta: float):
 
 func attacked_by_enemy(other: Area3D):
 	if other.is_in_group("enemies") and health_percent > 0:
-		other.queue_free()
+		kill_enemy(other)
 		health_percent -= 5.0
 		$DamageLight.flash()
+
+func kill_enemy(other: Area3D):
+	xp += other.xp
+	other.queue_free()
 	
 func set_health(health: float):
 	health_percent = health

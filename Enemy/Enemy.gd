@@ -7,6 +7,10 @@ class_name Enemy
 # var camera : Camera3
 @onready var player = get_tree().get_first_node_in_group("player")
 
+# xp that is given to the player on death
+@export
+var xp: float = 1.0
+
 func _process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	var velocity = direction * movement_speed * delta
