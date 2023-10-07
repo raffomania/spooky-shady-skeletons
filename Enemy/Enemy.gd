@@ -11,10 +11,13 @@ class_name Enemy
 @export
 var xp: float = 1.0
 
-func _process(delta):
-    var direction = global_position.direction_to(player.global_position)
-    var velocity = direction * movement_speed * delta
-    global_position += velocity
 
 func _ready():
     add_to_group("enemies")
+    GlobalClock.beat.connect(jump)
+
+
+func jump():
+    var direction = global_position.direction_to(player.global_position)
+    var velocity = direction * movement_speed
+    create_tween().tween_property(self, "position", position + velocity, 0.1)
