@@ -13,6 +13,5 @@ func enemy_entered(node: Node3D):
 		print_debug(node.name)
 
 
-
 func _ready():
-	body_entered.connect(enemy_entered)
+	area_entered.connect(enemy_entered)

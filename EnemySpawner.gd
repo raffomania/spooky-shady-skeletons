@@ -14,7 +14,8 @@ var rng = RandomNumberGenerator.new()
 func _ready():
     GlobalSignals.connect("global_clock_tick", spawn)
     enemy_scene = load("res://Enemy/Enemy.tscn")
-
+    # for debugging, instantly spawn enemies
+    clock_ticks_since_last_spawn = spawn_freq
 
 func spawn():
     clock_ticks_since_last_spawn += 1
@@ -28,5 +29,5 @@ func spawn():
             enemy.position.z += z_offset
             add_child(enemy)
             
-        print_debug("spawned " + str(spawn_count))
+        print("spawned %s enemies" % spawn_count)
         clock_ticks_since_last_spawn = 0

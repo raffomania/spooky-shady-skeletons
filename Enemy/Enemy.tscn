@@ -1,19 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://br81rul46txb4"]
+[gd_scene load_steps=6 format=3 uid="uid://br81rul46txb4"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_5i7qf"]
+[ext_resource type="Texture2D" uid="uid://bbsocv706vih5" path="res://icon.svg" id="2_bmtvv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0h1t"]
+albedo_texture = ExtResource("2_bmtvv")
+billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_u66nh"]
+material = SubResource("StandardMaterial3D_y0h1t")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bnhmk"]
-radius = 0.220328
-height = 1.01264
+[sub_resource type="SphereShape3D" id="SphereShape3D_mtgu7"]
 
-[node name="Enemy" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4104, 1.56301, -68.0638)
+[node name="Enemy" type="Area3D"]
 script = ExtResource("1_5i7qf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("QuadMesh_u66nh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_bnhmk")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514022, 0)
+shape = SubResource("SphereShape3D_mtgu7")
