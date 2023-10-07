@@ -1,7 +1,7 @@
 extends Node
 
 @export
-# spooky scary skeletons has 154 (maybe 155) bpm
+# spooky scary skeletons remix has 128 bpm
 var beats_per_minute : int
 
 var seconds_between_clock_ticks: float
