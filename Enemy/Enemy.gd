@@ -24,10 +24,28 @@ func _ready():
 func set_animation_shader_param():
     $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.bar_progress)
 
+func set_direction(direction : Vector3):
+    var rotated_direction_vector = direction.rotated(Vector3.UP, -PI / 4)
+    var dir : int
+    # rotate by Pi / 4
+    if (rotated_direction_vector.z > 0):
+        dir = 0
+    else:
+        dir = 1
+
+    if (abs(rotated_direction_vector.x) > abs(rotated_direction_vector.z)):
+        if (rotated_direction_vector.x < 0):
+            dir = 2
+        else:
+            dir = 3
+    
+    $MeshInstance3D.get_active_material(0).set_shader_parameter("direction", dir)
+
 func move_towards_player(delta):
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed * delta
     global_position += velocity
+    set_direction(direction)
 
 # All enemies jump based on the music beat
 func jump():
