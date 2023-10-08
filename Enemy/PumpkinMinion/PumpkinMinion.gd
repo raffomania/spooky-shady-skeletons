@@ -4,8 +4,8 @@ class_name PumpkinMinion
 func _ready():
     super()
     health = 150
-    movement_speed = 0.5
-    xp = 3.0
+    movement_speed = 0.8
+    xp = 2.0
     GlobalClock.beat.connect(jump_towards_player)
 
 

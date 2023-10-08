@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Enemy/PumpkinMinion/PumpkinMinion.gd" id="1_xdh5f"]
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_yknrc"]
-[ext_resource type="Texture2D" uid="uid://hor8vs501gd3" path="res://Enemy/Pumpkin/back.png" id="3_wkeci"]
-[ext_resource type="Texture2D" uid="uid://1noi1obn1n21" path="res://Enemy/Pumpkin/front.png" id="4_tkj0x"]
-[ext_resource type="Texture2D" uid="uid://cbqrpwp8g02t2" path="res://Enemy/Pumpkin/looking_left.png" id="5_ftopt"]
-[ext_resource type="Texture2D" uid="uid://cmxegmjuds074" path="res://Enemy/Pumpkin/looking_right.png" id="6_8n38q"]
+[ext_resource type="Texture2D" uid="uid://cgadt8kte8i0d" path="res://Enemy/PumpkinMinion/back.png" id="3_2brv4"]
+[ext_resource type="Texture2D" uid="uid://cs0gxnkd71vq2" path="res://Enemy/PumpkinMinion/front.png" id="4_esfoj"]
+[ext_resource type="Texture2D" uid="uid://du5qctqjlepc2" path="res://Enemy/PumpkinMinion/looking_left.png" id="5_ekuay"]
+[ext_resource type="Texture2D" uid="uid://b2tsm7ywg1n2k" path="res://Enemy/PumpkinMinion/looking_right.png" id="6_cs6wy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u87lj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly2pw"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_yknrc")
@@ -29,14 +29,14 @@ shader_parameter/h_frames = 2
 shader_parameter/v_frames = 2
 shader_parameter/total_frames = 4
 shader_parameter/animation_progress = 0.0
-shader_parameter/front_texture = ExtResource("4_tkj0x")
-shader_parameter/back_texture = ExtResource("3_wkeci")
-shader_parameter/looking_left_texture = ExtResource("5_ftopt")
-shader_parameter/looking_right_texture = ExtResource("6_8n38q")
+shader_parameter/front_texture = ExtResource("4_esfoj")
+shader_parameter/back_texture = ExtResource("3_2brv4")
+shader_parameter/looking_left_texture = ExtResource("5_ekuay")
+shader_parameter/looking_right_texture = ExtResource("6_cs6wy")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g33ew"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_u87lj")
+material = SubResource("ShaderMaterial_ly2pw")
 size = Vector2(1, 1)
 orientation = 2
 
