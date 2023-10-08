@@ -50,12 +50,15 @@ transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -5
 transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -3.86763, -0.0300181, 2.00828)
 
 [node name="HelpText" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.764171, 1.87143, 3.30326)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.764171, 4.1496, 3.30326)
 billboard = 1
-text = "Use WASD / Arrow keys to move
+text = "Spooky Shady Skeletons
+
+Use WASD / Arrow keys to move
 Press shift to dodge the enemies
 Gain XP and level up!
-"
+
+Music by Ben Zimmermann"
 font_size = 64
 horizontal_alignment = 0
 script = ExtResource("7_f275a")
