@@ -148,7 +148,8 @@ func on_upgrade_chosen(upgrade: Upgrade.Kind):
         Upgrade.Kind.Cake:
             var cake = preload("res://Weapons/Cake/cake_weapon.tscn").instantiate()
             add_child(cake)
-
+        Upgrade.Kind.Speed:
+            movement_speed *= 1.1
 
 
 func collect_xp_orb(other: Area3D):
