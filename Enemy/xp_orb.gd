@@ -1,7 +1,7 @@
 extends Area3D
 class_name XPOrb
 
-var wobble_height = 0.01
+var wobble_height = 0.1
 var offset = Vector3.UP * wobble_height
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
