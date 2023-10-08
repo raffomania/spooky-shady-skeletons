@@ -7,8 +7,6 @@ var cake_timer: Timer
 
 
 func _ready():
-    area_entered.connect(on_area_entered)
-
     GlobalClock.section.connect(cake_time)
 
     $cake.visible = false
@@ -19,10 +17,6 @@ func _process(delta):
 
 func make_damage(enemy: Enemy):
     enemy.take_damage(damage)
-
-func on_area_entered(other: Area3D):
-    if other is Enemy and $cake.visible:
-        make_damage(other)
 
 func cake_time():
     $cake.visible = true

@@ -4,7 +4,8 @@
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_02v04"]
 [ext_resource type="Texture2D" uid="uid://dcc5j218vsdlc" path="res://Enemy/Skeleton/front.png" id="3_qj6xq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3y76"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skdx7"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_02v04")
 shader_parameter/albedo = Color(0.509804, 0.643137, 0.698039, 1)
@@ -18,8 +19,8 @@ shader_parameter/uv1_offset = null
 shader_parameter/uv2_scale = null
 shader_parameter/uv2_offset = null
 shader_parameter/direction = 0
-shader_parameter/hit_animation = null
-shader_parameter/hit_anim_color = Color(0.792157, 0.796078, 0.968627, 1)
+shader_parameter/hit_animation = 0.0
+shader_parameter/hit_anim_color = Color(0.984314, 0.752941, 0.729412, 1)
 shader_parameter/h_frames = 3
 shader_parameter/v_frames = 3
 shader_parameter/total_frames = 8
@@ -27,7 +28,8 @@ shader_parameter/animation_progress = 0.0
 shader_parameter/front_texture = ExtResource("3_qj6xq")
 
 [sub_resource type="QuadMesh" id="QuadMesh_urxtd"]
-material = SubResource("ShaderMaterial_g3y76")
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_skdx7")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mtgu7"]
 

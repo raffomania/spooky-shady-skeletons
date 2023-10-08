@@ -5,7 +5,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4yxxp"]
 height = 1.06517
-radius = 2.58585
+radius = 1.81042
 
 [node name="CakeWeapon" type="Area3D"]
 script = ExtResource("1_qnef0")

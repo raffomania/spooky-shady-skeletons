@@ -101,12 +101,10 @@ func add_xp(amount: float):
     $XPParticles.amount = 10 * amount
     $XPParticles.emitting = true
 
-
 func level_up(new_level: int):
     level = new_level
     GlobalSignals.level_up.emit()
     print('level up: ', new_level)
-
 
 func set_health(health: float):
     health_percent = health
@@ -119,7 +117,6 @@ func set_health(health: float):
 func enable_dash():
     is_dash_possible = true
     print("dash is possible now")
-
 
 func enter_upgrade(other: Area3D):
     if other is Upgrade and health_percent > 0 and !dashing:
