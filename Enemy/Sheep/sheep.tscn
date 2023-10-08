@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgawx6dqttjit"]
+[gd_scene load_steps=9 format=3 uid="uid://dsbwe7bxvylgr"]
 
 [ext_resource type="Script" path="res://Enemy/Sheep/sheep.gd" id="1_ot8av"]
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_gnqku"]

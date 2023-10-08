@@ -35,7 +35,7 @@ func set_sprite_direction(direction : Vector3):
         else:
             dir = 3
 
-    $MeshInstance3D.get_active_material(0).set_shader_parameter("direction", dir)
+    $Billboard.get_active_material(0).set_shader_parameter("direction", dir)
 
 func move_towards_player(delta):
     if health <= 0: return
@@ -50,7 +50,7 @@ func set_animation_shader_param():
     if anim_with_offset > 1:
         anim_with_offset -= 1
 
-    $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
+    $Billboard.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
 
 
 var was_hit : bool
