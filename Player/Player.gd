@@ -19,6 +19,9 @@ var timer_dash
 var health_percent: float:
     set = set_health
 
+@onready
+var health_light_default_energy = $HealthLight.light_energy
+
 # Player xp
 var xp: float = 1.0
 var level: int = 1
@@ -32,6 +35,7 @@ func _ready():
     $DamageDetector.area_entered.connect(enter_upgrade)
     $DamageDetector.area_exited.connect(exit_upgrade)
     $DamageDetector.area_entered.connect(collect_xp_orb)
+    GlobalSignals.new_level_chosen.connect(on_new_level)
     animation_player = $Model/AnimationPlayer
     animation_player.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
     timer_dash = get_node("Timer")
@@ -119,6 +123,7 @@ func set_health(health: float):
 func enable_dash():
     is_dash_possible = true
 
+
 func enter_upgrade(other: Area3D):
     if other is Upgrade and health_percent > 0 and !dashing:
         other.start_countdown()
@@ -127,6 +132,21 @@ func enter_upgrade(other: Area3D):
 func exit_upgrade(other: Area3D):
     if other is Upgrade:
         other.stop_countdown()
+
+
+func play_new_level_transition():
+    await GlobalClock.bar
+    var tween = create_tween()
+    tween.tween_property($HealthLight, "light_energy", 0.0, GlobalClock.beat_duration * 4)
+    await GlobalClock.bar
+    # animation has finished, let the dark stay
+    # for a little while
+    await GlobalClock.bar
+
+
+func on_new_level():
+    create_tween().tween_property($HealthLight, "light_energy",  health_light_default_energy, GlobalClock.beat_duration * 2)
+
 
 func collect_xp_orb(other: Area3D):
     if other is XPOrb and health_percent > 0:

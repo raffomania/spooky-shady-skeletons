@@ -27,12 +27,21 @@ func _ready():
     pumpkin_scene = preload("res://Enemy/Pumpkin/Pumpkin.tscn")
     drop_scene = preload("res://Enemy/xp_orb.tscn")
     GlobalSignals.level_up.connect(on_level_up)
-    GlobalClock.bar.connect(spawn)
+    GlobalSignals.new_level_chosen.connect(on_new_level_chosen)
+    GlobalClock.section.connect(spawn)
     add_to_group("spawner")
 
 
 func on_level_up():
     is_upgrading = true
+
+
+func on_new_level_chosen():
+    await GlobalClock.beat
+    # give the player a little time to adjust
+    await get_tree().create_timer(GlobalClock.beat_duration * 4).timeout
+    is_upgrading = false
+
     
 func drop_loot(position, xp):
     var drop = drop_scene.instantiate()
