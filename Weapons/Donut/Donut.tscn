@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bt424qtt00s1a"]
 
 [ext_resource type="Script" path="res://Weapons/Donut/Donut.gd" id="1_nj4un"]
-[ext_resource type="PackedScene" path="res://Assets/Food Assets/donut.glb" id="2_k57e6"]
+[ext_resource type="PackedScene" uid="uid://b8cpxg2x34ok8" path="res://Assets/Food Assets/donut.glb" id="2_k57e6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4dg20"]
 radius = 0.201652
