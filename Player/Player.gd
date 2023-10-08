@@ -92,7 +92,7 @@ func kill_enemy(other: Area3D):
 func add_xp(amount: float):
     xp += amount
 
-    var current_level = floor(log(xp) / log(2))
+    var current_level = floor(log(xp) / log(3))
     if current_level > level:
         level_up(current_level)
 
