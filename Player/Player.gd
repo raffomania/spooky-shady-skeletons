@@ -70,7 +70,7 @@ func _process(delta: float):
             is_dash_possible = false
             timer_dash.start(1.5)
             $DashParticles.emitting = false
-            $DashParticles.rotation = movement
+            $DashParticles.rotation = movement * -1
             $DashParticles.emitting = true
 
     position += movement

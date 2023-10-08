@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://drjl68dym5x1h"]
+[gd_scene load_steps=16 format=3 uid="uid://drjl68dym5x1h"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
 [ext_resource type="PackedScene" uid="uid://c40ltvluklnk2" path="res://Player/Model.tscn" id="2_q7047"]
@@ -26,6 +26,7 @@ size = Vector2(0.1, 0.1)
 orientation = 1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wp03p"]
+particle_flag_align_y = true
 spread = 29.52
 gravity = Vector3(0, 1, 0)
 initial_velocity_min = 1.0
@@ -41,6 +42,12 @@ albedo_color = Color(0.309804, 0.235294, 0.258824, 1)
 material = SubResource("StandardMaterial3D_uv6r7")
 size = Vector2(0.05, 0.05)
 orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xh3my"]
+
+[sub_resource type="TextMesh" id="TextMesh_pmkdr"]
+material = SubResource("StandardMaterial3D_xh3my")
+text = "DASH"
 
 [node name="Player" type="Node3D"]
 script = ExtResource("2_fpfru")
@@ -103,11 +110,15 @@ damage = 50
 [node name="Donut" parent="." instance=ExtResource("6_u2y65")]
 
 [node name="DashParticles" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.309017, 0.951056, 0, -0.951056, -0.309017, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 emitting = false
-amount = 30
-lifetime = 0.54
+amount = 10
+lifetime = 0.73
 one_shot = true
 explosiveness = 0.77
+trail_enabled = true
+trail_lifetime = 0.99
 process_material = SubResource("ParticleProcessMaterial_wp03p")
+draw_passes = 2
 draw_pass_1 = SubResource("QuadMesh_35oya")
+draw_pass_2 = SubResource("TextMesh_pmkdr")
