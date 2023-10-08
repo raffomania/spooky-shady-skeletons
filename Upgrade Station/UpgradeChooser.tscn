@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjjcopdf8axjd"]
 
+[ext_resource type="Script" path="res://Upgrade Station/UpgradeChooser.gd" id="1_xh2b0"]
 [ext_resource type="Texture2D" uid="uid://bf30y4e21rr7k" path="res://Assets/Graveyard Assets/Textures/colormap.png" id="2_5mdgk"]
-[ext_resource type="Script" path="res://Upgrade Station/Upgrade.gd" id="2_c7fll"]
-[ext_resource type="Script" path="res://Upgrade Station/Countdown.gd" id="3_kgi0g"]
+[ext_resource type="Script" path="res://Upgrade Station/Countdown.gd" id="3_h0tb8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ol1x0"]
 resource_name = "colormap"
@@ -44,7 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_0t5mf")
 size = Vector3(0.5, 0.5, 1)
 
 [node name="coffin-old" type="Area3D"]
-script = ExtResource("2_c7fll")
+script = ExtResource("1_xh2b0")
 
 [node name="coffin-old2" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_oqixo")
@@ -53,7 +53,7 @@ skeleton = NodePath("")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.854288, 0)
 billboard = 1
-script = ExtResource("3_kgi0g")
+script = ExtResource("3_h0tb8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_px27y")
