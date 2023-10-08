@@ -30,6 +30,7 @@ func _ready():
     health_percent = 100.0
     $DamageDetector.area_entered.connect(attacked_by_enemy)
     $DamageDetector.area_entered.connect(enter_upgrade)
+    $DamageDetector.area_entered.connect(collect_xp_orb)
     animation_player = $Model/AnimationPlayer
     animation_player.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
     timer_dash = get_node("Timer")
@@ -121,3 +122,11 @@ func enable_dash():
 func enter_upgrade(other: Area3D):
     if other is Upgrade and health_percent > 0 and !dashing:
         other.start_countdown()
+
+func collect_xp_orb(other: Area3D):
+    if other is XPOrb and health_percent > 0:
+        other.collected = true
+        await GlobalClock.beat
+        add_xp(other.xp)
+        other.queue_free()
+

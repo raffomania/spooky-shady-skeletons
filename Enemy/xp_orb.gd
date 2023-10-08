@@ -1,4 +1,5 @@
 extends Area3D
+class_name XPOrb
 
 var wobble_height = 0.01
 var offset = Vector3.UP * wobble_height
@@ -7,20 +8,19 @@ var offset = Vector3.UP * wobble_height
 
 @export var xp: float = 1.0
 
+var collected := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     position += (offset * 10)
 
-    # Register our hit handler
-    area_entered.connect(on_area_entered)
-
-func on_area_entered(other: Node3D):
-    if other is Player:
-        player.add_xp(xp)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
     var bar_progress = GlobalClock.bar_progress
     var sin_position = sin(bar_progress * 2 * PI)
-    position += offset * sin_position
+    position += offset * sin_position * delta
+
+    # move towards player
+    if collected:
+        global_position += (player.global_position - global_position) * delta * 5

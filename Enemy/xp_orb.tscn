@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cu6f1ewwbma6u" path="res://Assets/Graveyard Assets/candle.glb" id="1_vs7rf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ub0xm"]
+radius = 1.26055
 
 [node name="Orb" type="Area3D"]
 script = ExtResource("1_teejf")
