@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvvd3bmfchhb3"]
 
-[ext_resource type="Script" path="res://Enemy/PumpkinMinion/PumpkinMinion.gd" id="1_7h0xo"]
+[ext_resource type="Script" path="res://Enemy/Bat/Bat.gd" id="1_pg1lw"]
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_tg6pp"]
 [ext_resource type="Texture2D" uid="uid://cs0gxnkd71vq2" path="res://Enemy/PumpkinMinion/front.png" id="4_0grby"]
 
@@ -34,7 +34,7 @@ material = SubResource("ShaderMaterial_8lxsl")
 radius = 1.25
 
 [node name="Bat" type="Area3D"]
-script = ExtResource("1_7h0xo")
+script = ExtResource("1_pg1lw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
