@@ -3,4 +3,7 @@ class_name Upgrade
 
 func start_countdown():
     $Label3D.show_countdown()
-    print("holi")
+
+
+func stop_countdown():
+    $Label3D.stop_countdown()
