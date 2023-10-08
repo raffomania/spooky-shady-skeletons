@@ -50,10 +50,19 @@ script = ExtResource("1_xh2b0")
 mesh = SubResource("ArrayMesh_oqixo")
 skeleton = NodePath("")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.854288, 0)
+[node name="CountdownLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55884, 0)
 billboard = 1
+font_size = 48
 script = ExtResource("3_h0tb8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_px27y")
+
+[node name="Description" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.751902, 0.150756, 0.580517)
+text = "Description"
+font_size = 48
+horizontal_alignment = 0
+autowrap_mode = 3
+width = 600.0

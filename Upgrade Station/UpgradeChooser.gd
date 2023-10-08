@@ -7,12 +7,13 @@ signal upgrade_chosen
 var kind: Upgrade.Kind
 
 func _ready():
-    $Label3D.countdown_finished.connect(func(): upgrade_chosen.emit())
+    $CountdownLabel.countdown_finished.connect(func(): upgrade_chosen.emit())
+    $Description.text = Upgrade.description(kind)
 
 
 func start_countdown():
-    $Label3D.show_countdown()
+    $CountdownLabel.show_countdown()
 
 
 func stop_countdown():
-    $Label3D.stop_countdown()
+    $CountdownLabel.stop_countdown()
