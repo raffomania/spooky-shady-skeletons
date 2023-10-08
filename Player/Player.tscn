@@ -1,10 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://drjl68dym5x1h"]
+[gd_scene load_steps=22 format=3 uid="uid://drjl68dym5x1h"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
 [ext_resource type="PackedScene" uid="uid://wkggbceph75q" path="res://Weapons/Cake/cake_weapon.tscn" id="3_xb6cu"]
 [ext_resource type="Script" path="res://Player/DamageLight.gd" id="4_yfimt"]
 [ext_resource type="PackedScene" uid="uid://dn7ty60mgkdpu" path="res://Weapons/Burger/Burger.tscn" id="5_0sblv"]
 [ext_resource type="PackedScene" uid="uid://bt424qtt00s1a" path="res://Weapons/Donut/Donut.tscn" id="6_u2y65"]
+[ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="6_x7uqw"]
+[ext_resource type="Texture2D" uid="uid://ddpy18jmgvrn6" path="res://Player/back.png" id="7_npkb5"]
+[ext_resource type="Texture2D" uid="uid://caovimbok8evf" path="res://Player/front.png" id="8_ibbtv"]
+[ext_resource type="Texture2D" uid="uid://cjarvcbg3nh45" path="res://Player/looking_left.png" id="9_f4ivj"]
+[ext_resource type="Texture2D" uid="uid://bn3s76hfglruu" path="res://Player/looking_right.png" id="10_oehug"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_svnhw"]
 radius = 0.294901
@@ -48,7 +53,34 @@ orientation = 1
 material = SubResource("StandardMaterial3D_xh3my")
 text = "DASH"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32cqo"]
+render_priority = 0
+shader = ExtResource("6_x7uqw")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/direction = null
+shader_parameter/hit_animation = null
+shader_parameter/hit_anim_color = null
+shader_parameter/h_frames = 2
+shader_parameter/v_frames = 2
+shader_parameter/total_frames = 4
+shader_parameter/animation_progress = null
+shader_parameter/front_texture = ExtResource("8_ibbtv")
+shader_parameter/back_texture = ExtResource("7_npkb5")
+shader_parameter/looking_left_texture = ExtResource("9_f4ivj")
+shader_parameter/looking_right_texture = ExtResource("10_oehug")
+
 [sub_resource type="QuadMesh" id="QuadMesh_dpkmx"]
+material = SubResource("ShaderMaterial_32cqo")
+size = Vector2(1.2, 1.2)
 
 [node name="Player" type="Node3D"]
 script = ExtResource("2_fpfru")
@@ -121,5 +153,5 @@ draw_pass_1 = SubResource("QuadMesh_35oya")
 draw_pass_2 = SubResource("TextMesh_pmkdr")
 
 [node name="Billboard" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 mesh = SubResource("QuadMesh_dpkmx")
