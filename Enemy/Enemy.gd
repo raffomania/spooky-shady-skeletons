@@ -20,6 +20,9 @@ func _ready():
     add_to_group("enemies")
     GlobalClock.beat.connect(jump)
 
+func set_animation_shader_param():
+    $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.bar_progress)
+
 func move_towards_player(delta):
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed * delta
