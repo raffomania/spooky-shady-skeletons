@@ -68,7 +68,10 @@ func _process(delta: float):
             dashing = true
             # disables dash for 2 secs
             is_dash_possible = false
-            timer_dash.start(2)
+            timer_dash.start(1.5)
+            $DashParticles.emitting = false
+            $DashParticles.rotation = movement
+            $DashParticles.emitting = true
 
     position += movement
 
