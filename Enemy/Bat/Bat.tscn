@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvvd3bmfchhb3"]
+
+[ext_resource type="Script" path="res://Enemy/PumpkinMinion/PumpkinMinion.gd" id="1_7h0xo"]
+[ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_tg6pp"]
+[ext_resource type="Texture2D" uid="uid://cs0gxnkd71vq2" path="res://Enemy/PumpkinMinion/front.png" id="4_0grby"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lxsl"]
+render_priority = 0
+shader = ExtResource("2_tg6pp")
+shader_parameter/albedo = Color(0.494118, 0.494118, 0.494118, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/direction = null
+shader_parameter/idle = null
+shader_parameter/hit_animation = null
+shader_parameter/hit_anim_color = null
+shader_parameter/h_frames = 2
+shader_parameter/v_frames = 2
+shader_parameter/total_frames = 4
+shader_parameter/animation_progress = 0.0
+shader_parameter/front_texture = ExtResource("4_0grby")
+
+[sub_resource type="QuadMesh" id="QuadMesh_d4mu5"]
+material = SubResource("ShaderMaterial_8lxsl")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h8ana"]
+radius = 1.25
+
+[node name="Bat" type="Area3D"]
+script = ExtResource("1_7h0xo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("QuadMesh_d4mu5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_h8ana")
