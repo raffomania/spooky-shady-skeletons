@@ -126,7 +126,16 @@ func spawn():
         sheep.position.z += z_offset
         add_child(sheep)
 
+    for _index in spawn_count_bat:
+        var bat = bat_scene.instantiate()
+        var x_offset = rng.randf_range(-10.0, 10.0)
+        var z_offset = rng.randf_range(-10.0, 10.0)
+        bat.position.x += x_offset
+        bat.position.z += z_offset
+        add_child(bat)
+
     print("spawned %d pumpkin minions" % spawn_count_pumpkin_minions)
     print("spawned %d pumpkins" % spawn_count_pumpkins)
     print("spawned %d skeletons" % spawn_count_skeletons)
     print("spawned %s sheep" % spawn_count_sheep)
+    print("spawned %s bat" % spawn_count_bat)

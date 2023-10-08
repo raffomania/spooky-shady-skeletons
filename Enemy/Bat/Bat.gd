@@ -4,7 +4,7 @@ class_name Bat
 func _ready():
     super()
     health = 50
-    movement_speed = 1.7
+    movement_speed = 1.3
     xp = 2.0
     GlobalClock.beat.connect(jump_towards_player)
 
