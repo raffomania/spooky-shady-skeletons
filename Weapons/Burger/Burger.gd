@@ -33,6 +33,8 @@ func _process(_delta):
     # and comes back.
     var sin_position = sin(bar_progress * PI)
     self.position = direction.normalized() * sin_position * max_distance
+    # Apply a slight offset to give the illusion of kicking
+    self.position += direction.normalized() * 0.2
 
 
 func on_area_entered(other: Area3D):
