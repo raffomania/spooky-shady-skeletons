@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvvd3bmfchhb3"]
+[gd_scene load_steps=9 format=3 uid="uid://bvvd3bmfchhb3"]
 
 [ext_resource type="Script" path="res://Enemy/Bat/Bat.gd" id="1_pg1lw"]
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_tg6pp"]
-[ext_resource type="Texture2D" uid="uid://cs0gxnkd71vq2" path="res://Enemy/PumpkinMinion/front.png" id="4_0grby"]
+[ext_resource type="Texture2D" uid="uid://crhu00jkcg3rq" path="res://Enemy/Bat/bat_back.png" id="3_b6aq8"]
+[ext_resource type="Texture2D" uid="uid://bamkensb0qlef" path="res://Enemy/Bat/bat_looking_left.png" id="4_ivil0"]
+[ext_resource type="Texture2D" uid="uid://rasabrei25t" path="res://Enemy/Bat/bat_looking_right.png" id="5_8e3k0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lxsl"]
 render_priority = 0
@@ -17,15 +19,18 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = null
 shader_parameter/uv2_scale = null
 shader_parameter/uv2_offset = null
-shader_parameter/direction = null
+shader_parameter/direction = 0
 shader_parameter/idle = null
 shader_parameter/hit_animation = null
 shader_parameter/hit_anim_color = null
-shader_parameter/h_frames = 2
+shader_parameter/h_frames = 3
 shader_parameter/v_frames = 2
-shader_parameter/total_frames = 4
+shader_parameter/total_frames = 6
 shader_parameter/animation_progress = 0.0
-shader_parameter/front_texture = ExtResource("4_0grby")
+shader_parameter/front_texture = ExtResource("4_ivil0")
+shader_parameter/back_texture = ExtResource("3_b6aq8")
+shader_parameter/looking_left_texture = ExtResource("4_ivil0")
+shader_parameter/looking_right_texture = ExtResource("5_8e3k0")
 
 [sub_resource type="QuadMesh" id="QuadMesh_d4mu5"]
 material = SubResource("ShaderMaterial_8lxsl")
