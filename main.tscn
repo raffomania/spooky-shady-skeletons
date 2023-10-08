@@ -27,8 +27,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837571, 0, -0.847464)
 
 [node name="EnemySpawner" type="Node" parent="."]
 script = ExtResource("5_g027a")
-spawn_count = 2
-spawn_freq = 8
+spawn_count_skeletons = 2
+spawn_count_pumpkins = 2
+spawn_freq_skeletons = 2
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("8_bn188")
