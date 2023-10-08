@@ -1,12 +1,16 @@
 extends Node
-
 class_name EnemySpawner
 
 @export
-var spawn_count : int
+var spawn_count_skeletons : int
+@export
+var spawn_count_pumpkins : int
+
 
 @export
-var spawn_freq : int
+var spawn_freq_skeletons : int
+@export
+var spawn_freq_pumpkins : int
 
 var skeleton_scene : Resource
 var pumpkin_scene : Resource
@@ -37,12 +41,20 @@ func spawn():
     if is_upgrading:
         return
 
-    for i in spawn_count:
+    for i in spawn_count_skeletons:
         var enemy = skeleton_scene.instantiate(i)
         var x_offset = rng.randf_range(-10.0, 10.0)
         var z_offset = rng.randf_range(-10.0, 10.0)
         enemy.position.x += x_offset
         enemy.position.z += z_offset
         add_child(enemy)
+        
+    for i in spawn_count_pumpkins:
+        var enemy = pumpkin_scene.instantiate(i)
+        var x_offset = rng.randf_range(-10.0, 10.0)
+        var z_offset = rng.randf_range(-10.0, 10.0)
+        enemy.position.x += x_offset
+        enemy.position.z += z_offset
+        add_child(enemy)
 
-    print("spawned %s enemies" % spawn_count)
+    print("spawned %s pumpkins" % spawn_count_pumpkins)
