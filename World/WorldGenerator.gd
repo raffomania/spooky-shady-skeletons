@@ -21,7 +21,7 @@ var grid: Dictionary = {}
 
 func _ready():
     # Subscribe to the map generation event.
-    GlobalSignals.new_level_chosen.connect(generate_map)
+    GlobalSignals.new_level_chosen.connect(func(_upgrade): generate_map())
 
     # Preload scenes
     dungeon_floor_scene = preload("res://World/DungeonFloor.tscn")

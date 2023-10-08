@@ -11,10 +11,10 @@ func _ready():
         upgrade.upgrade_chosen.connect(func(): upgrade_chosen(upgrade))
 
 
-func upgrade_chosen(_upgrade: UpgradeChooser):
+func upgrade_chosen(upgrade: UpgradeChooser):
     await player.play_new_level_transition()
     visible = false
-    GlobalSignals.new_level_chosen.emit()
+    GlobalSignals.new_level_chosen.emit(upgrade.kind)
 
 
 func start_upgrading():

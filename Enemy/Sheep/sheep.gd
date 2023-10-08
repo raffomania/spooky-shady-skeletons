@@ -41,6 +41,10 @@ func take_damage(damage: int):
             "amount": 4,
             "position":global_position,
         })
+        set_process(false)
+        var tween = create_tween()
+        tween.tween_property(self, "position", position + Vector3.DOWN * 8, GlobalClock.beat_duration * 2)
+        await tween.finished
         queue_free()
 
 

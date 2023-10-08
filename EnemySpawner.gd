@@ -35,9 +35,14 @@ func _ready():
 
 func on_level_up():
     is_upgrading = true
+    for child in get_children():
+        if child.has_method("take_damage") and child.get("health") != null:
+            child.take_damage(child.health)
+        else:
+            child.queue_free()
 
 
-func on_new_level_chosen():
+func on_new_level_chosen(_upgrade: Upgrade.Kind):
     await GlobalClock.beat
     # give the player a little time to adjust
     await get_tree().create_timer(GlobalClock.beat_duration * 2).timeout
@@ -45,7 +50,8 @@ func on_new_level_chosen():
 
 
 func spawn_skeletons(payload: Dictionary):
-   for _index in range(0, payload["amount"]):
+    if is_upgrading: return
+    for _index in range(0, payload["amount"]):
         var skeleton = skeleton_scene.instantiate()
         skeleton.position = payload['position']
         var x_offset = rng.randf_range(-2.0, 2.0)
@@ -56,6 +62,7 @@ func spawn_skeletons(payload: Dictionary):
 
 
 func drop_loot(position, xp):
+    if is_upgrading: return
     var drop = drop_scene.instantiate()
     drop.position = position
     drop.xp = xp

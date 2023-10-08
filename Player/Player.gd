@@ -45,6 +45,8 @@ func _process(delta: float):
 
     if (Input.get_action_strength("quit")):
         get_tree().quit()
+    if (Input.get_action_strength("level_up")):
+        GlobalSignals.level_up.emit()
     if (current_dash_duration >= dash_duration):
         dashing = false
         current_dash_duration = 0
@@ -137,7 +139,7 @@ func play_new_level_transition():
     await GlobalClock.bar
 
 
-func on_new_level():
+func on_new_level(_upgrade: Upgrade.Kind):
     create_tween().tween_property($HealthLight, "light_energy",  health_light_default_energy, GlobalClock.beat_duration * 2)
 
 

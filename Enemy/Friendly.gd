@@ -38,6 +38,7 @@ func set_sprite_direction(direction : Vector3):
     $MeshInstance3D.get_active_material(0).set_shader_parameter("direction", dir)
 
 func move_towards_player(delta):
+    if health <= 0: return
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed * delta
     global_position += velocity

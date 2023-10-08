@@ -49,6 +49,8 @@ func set_sprite_direction(direction : Vector3):
     $MeshInstance3D.get_active_material(0).set_shader_parameter("direction", dir)
 
 func move_towards_player(delta):
+    if health <= 0: return
+
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed * delta
     global_position += velocity
@@ -57,6 +59,8 @@ func move_towards_player(delta):
 
 # All enemies jump based on the music beat
 func jump_towards_player():
+    if health <= 0: return
+
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed
     create_tween().tween_property(self, "position", position + velocity, 0.1)
@@ -72,6 +76,8 @@ func take_damage(damage: int):
 
     if health <= 0:
         # Wait until next beat to die
-        await GlobalClock.beat
         spawner.drop_loot(position, xp)
+        var tween = create_tween()
+        tween.tween_property(self, "position", position + Vector3.DOWN * 8, GlobalClock.beat_duration * 2)
+        await tween.finished
         queue_free()
