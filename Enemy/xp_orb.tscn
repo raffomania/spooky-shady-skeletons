@@ -17,7 +17,7 @@ shape = SubResource("SphereShape3D_ub0xm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129168, 0)
-light_color = Color(0.458824, 1, 1, 1)
+light_color = Color(0.729412, 0.313726, 0.34902, 1)
 light_size = 0.017
 light_specular = 0.0
 omni_range = 3.987
