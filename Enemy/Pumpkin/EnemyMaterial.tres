@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dyyqhh5oonpvx"]
+
+[ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="1_x7irr"]
+[ext_resource type="Texture2D" uid="uid://b6i56smndfhvw" path="res://Enemy/Pumpkin/front.png" id="2_o7eyp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_x7irr")
+shader_parameter/albedo = null
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/direction = null
+shader_parameter/hit_animation = null
+shader_parameter/hit_anim_color = null
+shader_parameter/h_frames = 2
+shader_parameter/v_frames = 2
+shader_parameter/total_frames = 4
+shader_parameter/animation_progress = 0.0
+shader_parameter/front_texture = ExtResource("2_o7eyp")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://br81rul46txb4"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_5i7qf"]
-[ext_resource type="Material" uid="uid://bmvahv6y12wq5" path="res://skeleton_material.tres" id="2_6ult6"]
+[ext_resource type="Material" path="res://skeleton_material.tres" id="2_6ult6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0u1xc"]
 material = ExtResource("2_6ult6")

@@ -9,6 +9,5 @@ func _ready():
 
 
 func _process(delta):
-    var direction = global_position.direction_to(player.global_position)
-    var velocity = direction * movement_speed * delta
-    global_position += velocity
+    move_towards_player(delta)
+    set_animation_shader_param()

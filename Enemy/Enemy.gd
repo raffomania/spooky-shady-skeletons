@@ -28,7 +28,6 @@ func move_towards_player(delta):
     var velocity = direction * movement_speed * delta
     global_position += velocity
 
-
 # All enemies jump based on the music beat
 func jump():
     var direction = global_position.direction_to(player.global_position)
