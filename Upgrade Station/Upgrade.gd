@@ -5,6 +5,7 @@ enum Kind {
     Speed,
     DashCooldown,
     Donut,
+    BurgerDamage,
 }
 
 static func description(kind: Kind):
@@ -17,10 +18,12 @@ static func description(kind: Kind):
             return "Shorten dash cooldown by 25%"
         Kind.Donut:
             return "A circling donut weapon"
+        Kind.BurgerDamage:
+            return "Double damage for your burger"
 
 static func can_get_upgrade(obtained_upgrades: Array[Kind], new_upgrade: Kind) -> bool:
     match new_upgrade:
-        Kind.Speed, Kind.DashCooldown, Kind.Donut:
+        Kind.Speed, Kind.DashCooldown, Kind.Donut, Kind.BurgerDamage:
             return true
         _:
             return not obtained_upgrades.has(new_upgrade)

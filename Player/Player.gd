@@ -152,6 +152,8 @@ func on_upgrade_chosen(upgrade: Upgrade.Kind):
         Upgrade.Kind.Donut:
             var donut = preload("res://Weapons/Donut/Donut.tscn").instantiate()
             add_child(donut)
+        Upgrade.Kind.BurgerDamage:
+            $'Burger'.damage = floor($'Burger'.damage * 2)
 
 
 
