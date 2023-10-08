@@ -13,13 +13,13 @@ signal bar
 # a section is 16 beats
 signal section
 
-var beats = 0
+var beats: int
 
 var time_begin
 var time_delay
-var next_beat_time := 0.0
-var previous_beat_time: float = 0.0
-var previous_bar_time: float = 0.0
+var next_beat_time : float
+var previous_beat_time: float
+var previous_bar_time: float
 
 # From 0 to 1, indicates how far along we are until
 # the next beat arrives.
@@ -38,6 +38,14 @@ var beat_progress
 var bar_progress
 
 func _ready():
+    get_tree().get_root().get_node("/root/Main/AudioStreamPlayer").finished.connect(start_playing)
+    start_playing()
+
+func start_playing():
+    beats = 0
+    next_beat_time = 0.0
+    previous_beat_time = 0.0
+    previous_bar_time = 0.0
     time_begin = Time.get_ticks_usec()
     time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
     get_tree().get_root().get_node("/root/Main/AudioStreamPlayer").play()

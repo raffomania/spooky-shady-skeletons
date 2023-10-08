@@ -27,8 +27,6 @@ var health_light_default_energy = $HealthLight.light_energy
 var xp: float = 1.0
 var level: int = 1
 
-var animation_player: AnimationPlayer
-
 func _ready():
     # trigger set_health method
     health_percent = 100.0
@@ -113,7 +111,6 @@ func set_health(health: float):
     health_percent = health
     $HealthLight.spot_angle = 10 + 65 * (health_percent / 100.0)
     if health_percent <= 0:
-        animation_player.play("die")
         # stop accepting player input
         set_process(false)
 
