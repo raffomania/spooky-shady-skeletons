@@ -13,15 +13,24 @@ var movement_speed: float
 # Also define a setter for the health property
 var health: int
 
+var anim_offset : float
 
 # Register all enemies to the enemies group
 # Also connect to the GlobalClock for beat based animations
 func _ready():
     add_to_group("enemies")
     GlobalClock.beat.connect(jump)
+    GlobalClock.beat.connect(handle_hit_animation_on_clock)
+    # randomize animation
+    # anim_offset = (randi() % 4) * GlobalClock.beat_duration
 
 func set_animation_shader_param():
-    $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.bar_progress)
+    var anim_with_offset = GlobalClock.bar_progress # + anim_offset
+
+    if anim_with_offset > 1:
+        anim_with_offset -= 1
+
+    $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
 
 func set_direction(direction : Vector3):
     var rotated_direction_vector = direction.rotated(Vector3.UP, -PI / 4)
