@@ -5,6 +5,9 @@ class_name EnemySpawner
 @export var spawn_count_skeletons : int
 @export var spawn_freq_skeletons : int
 
+@export var spawn_count_pumpkin_minions : int
+@export var spawn_freq_pumpkin_minions : int
+
 @export var spawn_count_pumpkins : int
 @export var spawn_freq_pumpkins : int
 
@@ -15,6 +18,7 @@ class_name EnemySpawner
 
 var skeleton_scene : Resource
 var pumpkin_scene : Resource
+var pumpkin_minion_scene : Resource
 var sheep_scene : Resource
 var drop_scene : Resource
 var is_upgrading := false
@@ -24,6 +28,7 @@ var rng = RandomNumberGenerator.new()
 func _ready():
     skeleton_scene = preload("res://Enemy/Skeleton/Skeleton.tscn")
     pumpkin_scene = preload("res://Enemy/Pumpkin/Pumpkin.tscn")
+    pumpkin_minion_scene = preload("res://Enemy/PumpkinMinion/PumpkinMinion.tscn")
     sheep_scene = preload("res://Enemy/Sheep/sheep.tscn")
     drop_scene = preload("res://Enemy/xp_orb.tscn")
     GlobalSignals.level_up.connect(on_level_up)
@@ -45,7 +50,7 @@ func on_level_up(level: int):
     spawn_count_skeletons += 1
 
     if (level % 2 == 1):
-        spawn_count_pumpkins += 1
+        spawn_count_pumpkin_minions += 1
 
     if (level % 3 == 1):
         spawn_count_sheep += 1
@@ -98,6 +103,14 @@ func spawn():
         enemy.position.z += z_offset
         add_child(enemy)
 
+    for _index in spawn_count_pumpkin_minions:
+        var enemy = pumpkin_minion_scene.instantiate()
+        var x_offset = rng.randf_range(-10.0, 10.0)
+        var z_offset = rng.randf_range(-10.0, 10.0)
+        enemy.position.x += x_offset
+        enemy.position.z += z_offset
+        add_child(enemy)
+
     for _index in spawn_count_sheep:
         var sheep = sheep_scene.instantiate()
         var x_offset = rng.randf_range(-10.0, 10.0)
@@ -106,6 +119,7 @@ func spawn():
         sheep.position.z += z_offset
         add_child(sheep)
 
+    print("spawned %d pumpkin minions" % spawn_count_pumpkin_minions)
     print("spawned %d pumpkins" % spawn_count_pumpkins)
     print("spawned %d skeletons" % spawn_count_skeletons)
     print("spawned %s sheep" % spawn_count_sheep)
