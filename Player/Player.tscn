@@ -48,6 +48,8 @@ orientation = 1
 material = SubResource("StandardMaterial3D_xh3my")
 text = "DASH"
 
+[sub_resource type="QuadMesh" id="QuadMesh_dpkmx"]
+
 [node name="Player" type="Node3D"]
 script = ExtResource("2_fpfru")
 
@@ -117,3 +119,7 @@ process_material = SubResource("ParticleProcessMaterial_wp03p")
 draw_passes = 2
 draw_pass_1 = SubResource("QuadMesh_35oya")
 draw_pass_2 = SubResource("TextMesh_pmkdr")
+
+[node name="Billboard" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("QuadMesh_dpkmx")
