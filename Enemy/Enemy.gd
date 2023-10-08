@@ -19,7 +19,6 @@ var health: int
 func _ready():
     add_to_group("enemies")
     GlobalClock.beat.connect(jump)
-    GlobalClock.beat.connect(handle_hit_animation_on_clock)
 
 func set_animation_shader_param():
     $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.bar_progress)
@@ -53,20 +52,13 @@ func jump():
     var velocity = direction * movement_speed
     create_tween().tween_property(self, "position", position + velocity, 0.1)
 
-var was_hit : bool
-func handle_hit_animation_on_clock(): 
-    if (was_hit):
-        # now the hit sound should be played, then its in rythm
-        was_hit = false
-        var material = $MeshInstance3D.get_active_material(0)
-        create_tween().tween_method(func(val): material.set_shader_parameter("hit_animation", val), 4.0,  0.0, GlobalClock.beat_duration / 2)
-
-
 # Set the health for this enemy.
 func take_damage(damage: int):
     health -= damage
-    was_hit = true
     # print("Took %d damage. Health now: %d" % [damage, health])
+
+    var material = $MeshInstance3D.get_active_material(0)
+    create_tween().tween_method(func(val): material.set_shader_parameter("hit_animation", val), 4.0,  0.0, GlobalClock.beat_duration / 2)
 
     if health <= 0:
         # Wait until next beat to die
