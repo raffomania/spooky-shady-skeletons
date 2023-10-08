@@ -36,13 +36,13 @@ func _ready():
     $DamageDetector.area_exited.connect(exit_upgrade)
     $DamageDetector.area_entered.connect(collect_xp_orb)
     GlobalSignals.new_level_chosen.connect(on_new_level)
-    animation_player = $Model/AnimationPlayer
-    animation_player.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
     timer_dash = get_node("Timer")
     timer_dash.timeout.connect(enable_dash)
 
 
 func _process(delta: float):
+    set_animation_shader_param()
+
     if (Input.get_action_strength("quit")):
         get_tree().quit()
     if (current_dash_duration >= dash_duration):
@@ -73,19 +73,9 @@ func _process(delta: float):
             $DashParticles.rotation = movement * -1
             $DashParticles.emitting = true
 
+    set_sprite_direction(movement_direction)
+
     position += movement
-
-    if (movement.length() > 0):
-        $'Model'.look_at(transform.origin + movement, Vector3.UP, true)
-
-    # Select animation that should be playing
-    if dashing:
-        animation_player.play("crouch")
-    elif movement != Vector3.ZERO:
-        animation_player.play("sprint")
-    else:
-        animation_player.play("idle")
-
 
 func attacked_by_enemy(other: Area3D):
     if other is Enemy and health_percent > 0 and !dashing:
@@ -157,4 +147,25 @@ func collect_xp_orb(other: Area3D):
         await GlobalClock.beat
         add_xp(other.xp)
         other.queue_free()
+
+
+func set_animation_shader_param():
+    $Billboard.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.beat_progress)
+
+func set_sprite_direction(direction : Vector3):
+    var rotated_direction_vector = direction.rotated(Vector3.UP, -PI / 4)
+    var dir : int
+    # rotate by Pi / 4
+    if (rotated_direction_vector.z > 0):
+        dir = 0
+    else:
+        dir = 1
+
+    if (abs(rotated_direction_vector.x) > abs(rotated_direction_vector.z)):
+        if (rotated_direction_vector.x < 0):
+            dir = 2
+        else:
+            dir = 3
+
+    $Billboard.get_active_material(0).set_shader_parameter("direction", dir)
 
