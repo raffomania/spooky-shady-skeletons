@@ -12,6 +12,9 @@ var spawn_freq_skeletons : int
 @export
 var spawn_freq_pumpkins : int
 
+@onready
+var difficulty_manager = $"../DifficultyManager"
+
 var skeleton_scene : Resource
 var pumpkin_scene : Resource
 var drop_scene : Resource
@@ -41,7 +44,8 @@ func spawn():
     if is_upgrading:
         return
 
-    for i in spawn_count_skeletons:
+    var difficulty = difficulty_manager.difficulty
+    for i in spawn_count_skeletons * difficulty:
         var enemy = skeleton_scene.instantiate(i)
         var x_offset = rng.randf_range(-10.0, 10.0)
         var z_offset = rng.randf_range(-10.0, 10.0)
@@ -49,7 +53,7 @@ func spawn():
         enemy.position.z += z_offset
         add_child(enemy)
         
-    for i in spawn_count_pumpkins:
+    for i in spawn_count_pumpkins * difficulty:
         var enemy = pumpkin_scene.instantiate(i)
         var x_offset = rng.randf_range(-10.0, 10.0)
         var z_offset = rng.randf_range(-10.0, 10.0)
@@ -57,4 +61,6 @@ func spawn():
         enemy.position.z += z_offset
         add_child(enemy)
 
-    print("spawned %s pumpkins" % spawn_count_pumpkins)
+    print("spawned %d pumpkins" % (spawn_count_pumpkins * difficulty))
+    print("spawned %d skeletons" % (spawn_count_skeletons* difficulty))
+    # print("spawned %s pumpkins" % spawn_count_pumpkins)

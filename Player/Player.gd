@@ -20,7 +20,7 @@ var health_percent: float:
     set = set_health
 
 # Player xp
-var xp: float = 0.0
+var xp: float = 1.0
 var level: int = 1
 
 var animation_player: AnimationPlayer
@@ -92,7 +92,7 @@ func kill_enemy(other: Area3D):
 func add_xp(amount: float):
     xp += amount
 
-    var current_level = round(log(xp))
+    var current_level = floor(log(xp) / log(2))
     if current_level > level:
         level_up(current_level)
 
