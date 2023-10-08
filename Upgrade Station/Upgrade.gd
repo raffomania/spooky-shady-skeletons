@@ -20,7 +20,7 @@ static func description(kind: Kind):
 
 static func can_get_upgrade(obtained_upgrades: Array[Kind], new_upgrade: Kind) -> bool:
     match new_upgrade:
-        Kind.Speed, Kind.DashCooldown:
+        Kind.Speed, Kind.DashCooldown, Kind.Donut:
             return true
         _:
             return not obtained_upgrades.has(new_upgrade)

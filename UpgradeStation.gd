@@ -22,7 +22,7 @@ func set_choosable_upgrades():
         var kind = available.pop_back()
         if kind != null:
             chooser.visible = true
-            chooser.kind = kind
+            chooser.kind = Upgrade.Kind.Donut
         else:
             chooser.visible = false
 

@@ -119,7 +119,7 @@ func enable_dash():
 
 
 func enter_upgrade(other: Area3D):
-    if other is UpgradeChooser and health_percent > 0 and !dashing:
+    if other is UpgradeChooser and health_percent > 0:
         other.start_countdown()
 
 
