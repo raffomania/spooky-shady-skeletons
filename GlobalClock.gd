@@ -49,22 +49,25 @@ func _process(_delta):
     time -= time_delay
     # May be below 0 (did not begin yet).
     time = max(0, time)
+
     beat_progress = (time - previous_beat_time) / beat_duration
-    # TODO: @Rafael The very first bar ends at the third beat. Couldn't fid out why
     bar_progress = (time - previous_bar_time) / (beat_duration * 4)
-    #print("bar progress %f" % bar_progress)
+
     if time >= next_beat_time:
         emit_beat()
 
 
 func emit_beat():
-    beats += 1
-    previous_beat_time = next_beat_time
-    next_beat_time = beats * beat_duration
     beat.emit()
-    #print("beat %d" % beats)
+    previous_beat_time = next_beat_time
+    print("beat %d" % beats)
     if beats % 4 == 0:
         bar.emit()
-        previous_bar_time = next_beat_time - beat_duration
+        print("bar ", floor(float(beats) / 4))
+        previous_bar_time = next_beat_time
     if beats % 16 == 0:
         section.emit()
+
+    # compute stuff for next beat
+    beats += 1
+    next_beat_time = beats * beat_duration
