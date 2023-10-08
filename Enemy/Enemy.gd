@@ -20,7 +20,6 @@ var anim_offset : float
 func _ready():
     add_to_group("enemies")
     GlobalClock.beat.connect(jump)
-    GlobalClock.beat.connect(handle_hit_animation_on_clock)
     # randomize animation
     # anim_offset = (randi() % 4) * GlobalClock.beat_duration
 
