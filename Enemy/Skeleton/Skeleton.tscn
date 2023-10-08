@@ -22,6 +22,7 @@ shader_parameter/uv1_offset = null
 shader_parameter/uv2_scale = null
 shader_parameter/uv2_offset = null
 shader_parameter/direction = 0
+shader_parameter/idle = null
 shader_parameter/hit_animation = 0.0
 shader_parameter/hit_anim_color = Color(0.984314, 0.752941, 0.729412, 1)
 shader_parameter/h_frames = 3

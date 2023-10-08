@@ -168,6 +168,12 @@ func set_sprite_direction(direction : Vector3):
             dir = 2
         else:
             dir = 3
+            
+    if (direction.length() < 0.00001):
+        dir = 0
+        $Billboard.get_active_material(0).set_shader_parameter("idle", true)
+    else:
+        $Billboard.get_active_material(0).set_shader_parameter("idle", false)
 
     $Billboard.get_active_material(0).set_shader_parameter("direction", dir)
 

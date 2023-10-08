@@ -9,6 +9,7 @@ func jump_towards_target():
     var direction = global_position.direction_to(update_target_position())
     var velocity = direction * movement_speed
     create_tween().tween_property(self, "position", position + velocity, 0.1)
+    set_sprite_direction(direction)
 
 
 func _ready():
@@ -49,6 +50,7 @@ func take_damage(damage: int):
 
 
 func _process(delta):
+    set_animation_shader_param()
     var direction = global_position.direction_to(update_target_position())
     var velocity = direction * movement_speed * delta
     global_position += velocity

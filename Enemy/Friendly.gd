@@ -44,6 +44,14 @@ func move_towards_player(delta):
     global_position += velocity
     # set_sprite_direction(direction)
 
+func set_animation_shader_param():
+    var anim_with_offset = GlobalClock.bar_progress # + anim_offset
+
+    if anim_with_offset > 1:
+        anim_with_offset -= 1
+
+    $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
+
 
 var was_hit : bool
 func handle_hit_animation_on_clock():

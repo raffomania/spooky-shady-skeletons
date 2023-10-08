@@ -24,9 +24,8 @@ uniform sampler2D front_texture : source_color,filter_nearest_mipmap,repeat_enab
 uniform sampler2D back_texture : source_color,filter_nearest_mipmap,repeat_enable;
 uniform sampler2D looking_left_texture : source_color,filter_nearest_mipmap,repeat_enable;
 uniform sampler2D looking_right_texture : source_color,filter_nearest_mipmap,repeat_enable;
-// TODO: add left and right up?
-// uniform sampler2D back_texture : source_color,filter_linear_mipmap,repeat_enable;
-// uniform sampler2D back_texture : source_color,filter_linear_mipmap,repeat_enable;
+uniform sampler2D idle_texture : source_color,filter_nearest_mipmap,repeat_enable;
+uniform bool idle;
 
 uniform float hit_animation : hint_range(0,1);
 uniform vec4 hit_anim_color : source_color;
@@ -64,6 +63,10 @@ void fragment() {
         albedo_tex = texture(looking_left_texture,base_uv);
     } else {
         albedo_tex = texture(looking_right_texture,base_uv);
+    }
+
+    if (idle) {
+        albedo_tex = texture(idle_texture,base_uv);
     }
 
     ALBEDO = albedo_tex.rgb + (hit_anim_color.rgb * float(hit_animation));
