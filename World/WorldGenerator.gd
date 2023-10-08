@@ -8,7 +8,7 @@ var stone_wall_scene: Resource
 var stone_wall_damaged_scene: Resource
 # A array of all border items.
 # For now we don't do anything with it, but we might do so lateron.
-var border_elements: Array[Resource]
+var border_elements: Array[Node3D]
 
 # The actual world grid.
 # It's a nested 2d grid, where each entry represents a single tile.

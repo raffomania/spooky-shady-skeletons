@@ -20,7 +20,7 @@ func on_area_entered(other: Node3D):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
     var bar_progress = GlobalClock.bar_progress
     var sin_position = sin(bar_progress * 2 * PI)
     position += offset * sin_position

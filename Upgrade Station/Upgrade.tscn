@@ -52,6 +52,7 @@ skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.854288, 0)
+billboard = 1
 script = ExtResource("3_kgi0g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
