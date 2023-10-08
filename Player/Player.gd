@@ -104,7 +104,7 @@ func add_xp(amount: float):
 
 func level_up(new_level: int):
     level = new_level
-    GlobalSignals.level_up.emit()
+    GlobalSignals.level_up.emit(level)
     print('level up: ', new_level)
 
 func set_health(health: float):

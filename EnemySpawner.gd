@@ -33,13 +33,22 @@ func _ready():
     add_to_group("spawner")
 
 
-func on_level_up():
+func on_level_up(level: int):
     is_upgrading = true
     for child in get_children():
         if child.has_method("take_damage") and child.get("health") != null:
             child.take_damage(child.health)
         else:
             child.queue_free()
+
+    # Increase enemy spawn amount
+    spawn_count_skeletons += 1
+
+    if (level % 2 == 1):
+        spawn_count_pumpkins += 1
+
+    if (level % 3 == 1):
+        spawn_count_sheep += 1
 
 
 func on_new_level_chosen(_upgrade: Upgrade.Kind):
@@ -73,8 +82,7 @@ func spawn():
     if is_upgrading or GlobalClock.beats < 4:
         return
 
-    var difficulty = difficulty_manager.difficulty
-    for i in spawn_count_skeletons * difficulty:
+    for i in spawn_count_skeletons:
         var enemy = skeleton_scene.instantiate()
         var x_offset = rng.randf_range(-10.0, 10.0)
         var z_offset = rng.randf_range(-10.0, 10.0)
@@ -82,7 +90,7 @@ func spawn():
         enemy.position.z += z_offset
         add_child(enemy)
 
-    for _index in spawn_count_pumpkins * difficulty:
+    for _index in spawn_count_pumpkins:
         var enemy = pumpkin_scene.instantiate()
         var x_offset = rng.randf_range(-10.0, 10.0)
         var z_offset = rng.randf_range(-10.0, 10.0)
@@ -98,6 +106,6 @@ func spawn():
         sheep.position.z += z_offset
         add_child(sheep)
 
-    print("spawned %d pumpkins" % (spawn_count_pumpkins * difficulty))
-    print("spawned %d skeletons" % (spawn_count_skeletons* difficulty))
+    print("spawned %d pumpkins" % spawn_count_pumpkins)
+    print("spawned %d skeletons" % spawn_count_skeletons)
     print("spawned %s sheep" % spawn_count_sheep)
