@@ -52,16 +52,15 @@ func on_level_up(level: int):
             child.queue_free()
 
     # Increase enemy spawn amount
+    spawn_count_skeletons += 1
 
-    if (level % 2 == 1):
+    if (level % 2 == 0):
         spawn_count_pumpkin_minions += 1
-    elif (level % 3 == 1):
+    if (level % 3 == 0):
         spawn_count_sheep += 1
         spawn_count_bat += 1
-    elif (level % 4 == 1):
+    if (level % 4 == 0):
         spawn_count_pumpkins += 1
-    else:
-        spawn_count_skeletons += 1
 
 
 func on_new_level_chosen(_upgrade: Upgrade.Kind):
