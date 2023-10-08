@@ -17,5 +17,5 @@ func upgrade_chosen(upgrade: UpgradeChooser):
     GlobalSignals.new_level_chosen.emit(upgrade.kind)
 
 
-func start_upgrading(level: int):
+func start_upgrading(_level: int):
     visible = true

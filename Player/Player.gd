@@ -35,7 +35,7 @@ func _ready():
     $DamageDetector.area_entered.connect(enter_upgrade)
     $DamageDetector.area_exited.connect(exit_upgrade)
     $DamageDetector.area_entered.connect(collect_xp_orb)
-    GlobalSignals.new_level_chosen.connect(on_new_level)
+    GlobalSignals.new_level_chosen.connect(on_upgrade_chosen)
     timer_dash = get_node("Timer")
     timer_dash.timeout.connect(enable_dash)
 
@@ -46,7 +46,7 @@ func _process(delta: float):
     if (Input.get_action_strength("quit")):
         get_tree().quit()
     if (Input.get_action_strength("level_up")):
-        GlobalSignals.level_up.emit()
+        GlobalSignals.level_up.emit(level)
     if (current_dash_duration >= dash_duration):
         dashing = false
         current_dash_duration = 0
@@ -141,8 +141,14 @@ func play_new_level_transition():
     await GlobalClock.bar
 
 
-func on_new_level(_upgrade: Upgrade.Kind):
+func on_upgrade_chosen(upgrade: Upgrade.Kind):
     create_tween().tween_property($HealthLight, "light_energy",  health_light_default_energy, GlobalClock.beat_duration * 2)
+
+    match upgrade:
+        Upgrade.Kind.Cake:
+            var cake = preload("res://Weapons/Cake/cake_weapon.tscn").instantiate()
+            add_child(cake)
+
 
 
 func collect_xp_orb(other: Area3D):
