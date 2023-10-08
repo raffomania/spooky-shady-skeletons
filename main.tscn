@@ -12,7 +12,7 @@
 background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_color = Color(0.25098, 0.192157, 0.258824, 1)
-ambient_light_energy = 0.5
+ambient_light_energy = 0.2
 tonemap_mode = 2
 
 [node name="Main" type="Node3D"]
