@@ -138,10 +138,10 @@ func exit_upgrade(other: Area3D):
 
 
 func play_new_level_transition():
-    await GlobalClock.bar
+    await GlobalClock.beat
     var tween = create_tween()
     tween.tween_property($HealthLight, "light_energy", 0.0, GlobalClock.beat_duration * 4)
-    await GlobalClock.bar
+    await tween.finished
     # animation has finished, let the dark stay
     # for a little while
     await GlobalClock.bar

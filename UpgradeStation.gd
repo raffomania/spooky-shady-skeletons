@@ -11,10 +11,9 @@ func _ready():
         upgrade.upgrade_chosen.connect(func(): upgrade_chosen(upgrade))
 
 
-func upgrade_chosen(upgrade: Upgrade):
-    print_debug("chose: ",upgrade)
-    visible = false
+func upgrade_chosen(_upgrade: Upgrade):
     await player.play_new_level_transition()
+    visible = false
     GlobalSignals.new_level_chosen.emit()
 
 
