@@ -1,10 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://br81rul46txb4"]
+[gd_scene load_steps=7 format=3 uid="uid://br81rul46txb4"]
 
 [ext_resource type="Script" path="res://Enemy/Skeleton/Skeleton.gd" id="1_5i7qf"]
-[ext_resource type="Material" uid="uid://dyyqhh5oonpvx" path="res://Enemy/Pumpkin/EnemyMaterial.tres" id="2_jmvc5"]
+[ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_02v04"]
+[ext_resource type="Texture2D" uid="uid://dcc5j218vsdlc" path="res://Enemy/Skeleton/front.png" id="3_qj6xq"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_u66nh"]
-material = ExtResource("2_jmvc5")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3y76"]
+render_priority = 0
+shader = ExtResource("2_02v04")
+shader_parameter/albedo = Color(0.509804, 0.643137, 0.698039, 1)
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = Vector3(1, 1, 0)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/direction = 0
+shader_parameter/hit_animation = null
+shader_parameter/hit_anim_color = Color(0.792157, 0.796078, 0.968627, 1)
+shader_parameter/h_frames = 3
+shader_parameter/v_frames = 3
+shader_parameter/total_frames = 8
+shader_parameter/animation_progress = 0.0
+shader_parameter/front_texture = ExtResource("3_qj6xq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_urxtd"]
+material = SubResource("ShaderMaterial_g3y76")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mtgu7"]
 
@@ -14,7 +37,7 @@ script = ExtResource("1_5i7qf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_u66nh")
+mesh = SubResource("QuadMesh_urxtd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514022, 0)

@@ -52,7 +52,7 @@ void fragment() {
     int tile_pos_x = current_frame % h_frames;
     int tile_pos_y = current_frame / v_frames;
 
-    //uv frame calc
+    //uv frame calc for animation
     base_uv = vec2((float(base_uv.x) + float(tile_pos_x)) / float(h_frames), (float(base_uv.y) + float(tile_pos_y)) / float(v_frames));
     //  directions
     vec4 albedo_tex;
