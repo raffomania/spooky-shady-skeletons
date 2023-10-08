@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://rgvfubqjvqje"]
+
+[ext_resource type="PackedScene" uid="uid://bjsa1h871206n" path="res://Assets/Mini Dungeon Assets/floor.glb" id="1_qu27n"]
+[ext_resource type="PackedScene" uid="uid://bhavy3ysr8eaf" path="res://Assets/Graveyard Assets/lightpost-all.glb" id="2_0ms1y"]
+
+[node name="DungeonFloorLantern" instance=ExtResource("1_qu27n")]
+
+[node name="lightpost-all" parent="." index="1" instance=ExtResource("2_0ms1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00206506, -5.96046e-08, 0.0101763)

@@ -4,6 +4,7 @@ const world_size: int = 40
 var rng = RandomNumberGenerator.new()
 var dungeon_floor_scene : Resource
 var dungeon_floor_detailed_scene : Resource
+var dungeon_floor_miscs: Array[Resource]
 var stone_wall_scene: Resource
 var stone_wall_damaged_scene: Resource
 # A array of all border items.
@@ -26,6 +27,11 @@ func _ready():
     # Preload scenes
     dungeon_floor_scene = preload("res://World/DungeonFloor.tscn")
     dungeon_floor_detailed_scene = preload("res://World/DungeonFloorDetailed.tscn")
+    dungeon_floor_miscs.append(preload("res://World/DungeonFloorCandles.tscn"))
+    dungeon_floor_miscs.append(preload("res://World/DungeonFloorDebris.tscn"))
+    dungeon_floor_miscs.append(preload("res://World/DungeonFloorGravestone.tscn"))
+    dungeon_floor_miscs.append(preload("res://World/DungeonFloorGravestoneBroken.tscn"))
+    dungeon_floor_miscs.append(preload("res://World/DungeonFloorLantern.tscn"))
 
     stone_wall_scene = preload("res://World/StoneWall.tscn")
     stone_wall_damaged_scene = preload("res://World/StoneWallDamaged.tscn")
@@ -70,6 +76,10 @@ func generate_map():
             var random = rng.randf_range(0, 1)
             if random < 0.10:
                 tile_resource = dungeon_floor_detailed_scene.instantiate()
+            elif rng.randf_range(0, 1) < 0.03:
+                # 3% chance for special floor
+                # Choose one of our random misc floors
+                tile_resource = dungeon_floor_miscs[randi() % dungeon_floor_miscs.size()].instantiate()
             else:
                 tile_resource = dungeon_floor_scene.instantiate()
 

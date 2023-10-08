@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bny0ebvc6mm14"]
+
+[ext_resource type="PackedScene" uid="uid://bjsa1h871206n" path="res://Assets/Mini Dungeon Assets/floor.glb" id="1_v8oxq"]
+[ext_resource type="PackedScene" uid="uid://c7kuhw3wnvels" path="res://Assets/Graveyard Assets/gravestone-broken.glb" id="2_u6q5k"]
+
+[node name="DungeonFloorGravestoneBroken" instance=ExtResource("1_v8oxq")]
+
+[node name="gravestone-broken" parent="." index="1" instance=ExtResource("2_u6q5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0184751, 0, -0.0100384)

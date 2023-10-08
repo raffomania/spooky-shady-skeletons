@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdbca2e2q73m1"]
+
+[ext_resource type="PackedScene" uid="uid://bjsa1h871206n" path="res://Assets/Mini Dungeon Assets/floor.glb" id="1_04dv0"]
+[ext_resource type="PackedScene" uid="uid://detxl8hfmnhc" path="res://Assets/Graveyard Assets/shovel.glb" id="2_o732m"]
+[ext_resource type="PackedScene" uid="uid://bcgh1ui68xkw7" path="res://Assets/Graveyard Assets/debris.glb" id="3_t434v"]
+[ext_resource type="PackedScene" uid="uid://24lsvgrp26qi" path="res://Assets/Graveyard Assets/debris-wood.glb" id="4_vhcrv"]
+
+[node name="DungeonFloorDebris" instance=ExtResource("1_04dv0")]
+
+[node name="shovel" parent="." index="1" instance=ExtResource("2_o732m")]
+transform = Transform3D(0.184966, -0.283294, -0.941027, -0.0528511, 0.953297, -0.297376, 0.981323, 0.104739, 0.161355, -0.12377, 0.110747, 0.220135)
+
+[node name="debris" parent="." index="2" instance=ExtResource("3_t434v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131848, 0, 0.240208)
+
+[node name="debris-wood" parent="." index="3" instance=ExtResource("4_vhcrv")]
+transform = Transform3D(0.54316, 0, -0.839629, 0, 1, 0, 0.839629, 0, 0.54316, -0.0480403, 0, -0.211178)
