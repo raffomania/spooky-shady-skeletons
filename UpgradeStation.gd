@@ -11,6 +11,9 @@ func _ready():
     GlobalSignals.level_up.connect(start_upgrading)
     set_choosable_upgrades()
 
+    for chooser in get_children():
+        chooser.upgrade_chosen.connect(upgrade_chosen)
+
 func set_choosable_upgrades():
     var available = Upgrade.Kind.values().filter(func(kind): return Upgrade.can_get_upgrade(enabled_upgrades, kind))
 
@@ -20,13 +23,11 @@ func set_choosable_upgrades():
         if kind != null:
             chooser.visible = true
             chooser.kind = kind
-            chooser.upgrade_chosen.connect(func(): upgrade_chosen(kind))
         else:
             chooser.visible = false
 
 
 func upgrade_chosen(upgrade: Upgrade.Kind):
-    print(upgrade)
     await player.play_new_level_transition()
     visible = false
     enabled_upgrades.push_back(upgrade)

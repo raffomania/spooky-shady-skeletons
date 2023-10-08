@@ -8,7 +8,7 @@ var kind: Upgrade.Kind:
     set = set_kind
 
 func _ready():
-    $CountdownLabel.countdown_finished.connect(func(): upgrade_chosen.emit())
+    $CountdownLabel.countdown_finished.connect(func(): upgrade_chosen.emit(kind))
 
 
 func set_kind(val: Upgrade.Kind):
