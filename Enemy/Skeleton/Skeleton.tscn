@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Enemy/Skeleton/Skeleton.gd" id="1_5i7qf"]
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_02v04"]
-[ext_resource type="Texture2D" uid="uid://cghl4d8l53yih" path="res://Enemy/Skeleton/back.png" id="3_csssa"]
-[ext_resource type="Texture2D" uid="uid://dcc5j218vsdlc" path="res://Enemy/Skeleton/front.png" id="3_qj6xq"]
-[ext_resource type="Texture2D" uid="uid://dyrerol1yqr0l" path="res://Enemy/Skeleton/looking_left.png" id="5_l6l17"]
-[ext_resource type="Texture2D" uid="uid://c67h53ues7lmx" path="res://Enemy/Skeleton/looking_right.png" id="6_o8uf8"]
+[ext_resource type="Texture2D" uid="uid://cte40b21vnt2e" path="res://Enemy/Skeleton/back.png" id="3_csssa"]
+[ext_resource type="Texture2D" uid="uid://jxwgc8u7qed" path="res://Enemy/Skeleton/front.png" id="3_qj6xq"]
+[ext_resource type="Texture2D" uid="uid://ca5nvgp63hene" path="res://Enemy/Skeleton/looking_left.png" id="5_l6l17"]
+[ext_resource type="Texture2D" uid="uid://bpc3dobywfmex" path="res://Enemy/Skeleton/looking_right.png" id="6_o8uf8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skdx7"]
 resource_local_to_scene = true
