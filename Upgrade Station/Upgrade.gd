@@ -15,9 +15,9 @@ static func description(kind: Kind):
         Kind.Donut:
             return "A circling donut weapon"
 
-static func can_get_multiple_times(kind: Kind) -> bool:
-    match kind:
+static func can_get_upgrade(obtained_upgrades: Array[Kind], new_upgrade: Kind) -> bool:
+    match new_upgrade:
         Kind.Speed:
             return true
         _:
-            return false
+            return not obtained_upgrades.has(new_upgrade)
