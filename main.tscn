@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://UpgradeStation.gd" id="7_1t088"]
 [ext_resource type="Script" path="res://HelpText.gd" id="7_f275a"]
 [ext_resource type="Script" path="res://World/WorldGenerator.gd" id="8_bn188"]
-[ext_resource type="PackedScene" uid="uid://cjjcopdf8axjd" path="res://Upgrade Station/UpgradeChooser.tscn" id="8_ce70s"]
+[ext_resource type="PackedScene" path="res://Upgrade Station/UpgradeChooser.tscn" id="8_ce70s"]
 [ext_resource type="Script" path="res://DifficultyManager.gd" id="8_cxfok"]
 
 [sub_resource type="Environment" id="Environment_lx8fk"]
@@ -22,11 +22,9 @@ tonemap_mode = 2
 
 [node name="EnemySpawner" type="Node" parent="."]
 script = ExtResource("5_g027a")
-spawn_count_skeletons = 2
+spawn_count_skeletons = 1
 spawn_freq_skeletons = 2
-spawn_count_pumpkins = 1
 spawn_freq_pumpkins = 2
-spawn_count_sheep = 1
 spawn_freq_sheep = 8
 
 [node name="WorldGenerator" type="Node3D" parent="."]
