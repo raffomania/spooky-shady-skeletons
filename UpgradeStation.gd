@@ -22,12 +22,14 @@ func set_choosable_upgrades():
         var kind = available.pop_back()
         if kind != null:
             chooser.visible = true
-            chooser.kind = Upgrade.Kind.Donut
+            chooser.kind = kind
         else:
             chooser.visible = false
 
 
 func upgrade_chosen(upgrade: Upgrade.Kind):
+    for chooser in get_children():
+        chooser.get_node("Description").text = ""
     await player.play_new_level_transition()
     visible = false
     enabled_upgrades.push_back(upgrade)

@@ -160,7 +160,6 @@ func on_upgrade_chosen(upgrade: Upgrade.Kind):
 func collect_xp_orb(other: Area3D):
     if other is XPOrb and health_percent > 0:
         other.collected = true
-        await GlobalClock.beat
         add_xp(other.xp)
         other.queue_free()
 
