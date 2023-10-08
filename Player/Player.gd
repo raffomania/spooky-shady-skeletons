@@ -14,6 +14,7 @@ var movement_direction: Vector3 = Vector3(0, 0, 0)
 var current_dash_duration: float = 0
 var is_dash_possible: bool = true
 var timer_dash
+var dash_cooldown := 1.5
 
 #Player Health
 var health_percent: float:
@@ -70,10 +71,9 @@ func _process(delta: float):
             dashing = true
             # disables dash for 2 secs
             is_dash_possible = false
-            timer_dash.start(1.5)
-            $DashParticles.emitting = false
+            timer_dash.start(dash_cooldown)
             $DashParticles.rotation = movement * -1
-            $DashParticles.emitting = true
+            $DashParticles.restart()
 
     set_sprite_direction(movement_direction)
 
@@ -150,6 +150,8 @@ func on_upgrade_chosen(upgrade: Upgrade.Kind):
             add_child(cake)
         Upgrade.Kind.Speed:
             movement_speed *= 1.1
+        Upgrade.Kind.DashCooldown:
+            dash_cooldown *= 0.75
         Upgrade.Kind.Donut:
             var donut = preload("res://Weapons/Donut/Donut.tscn").instantiate()
             add_child(donut)
