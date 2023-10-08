@@ -11,8 +11,11 @@ func _ready():
     GlobalSignals.level_up.connect(start_upgrading)
     set_choosable_upgrades()
 
+func is_upgrade_available(kind):
+    return Upgrade.can_get_multiple_times(kind) or (not enabled_upgrades.has(kind))
+
 func set_choosable_upgrades():
-    var available = Upgrade.Kind.values().filter(func(kind): return not enabled_upgrades.has(kind))
+    var available = Upgrade.Kind.values().filter(is_upgrade_available)
 
     available.shuffle()
     for chooser in get_children():
