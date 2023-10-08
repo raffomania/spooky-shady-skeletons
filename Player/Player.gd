@@ -103,7 +103,7 @@ func add_xp(amount: float):
 func level_up(new_level: int):
     level = new_level
     # reset health on level up
-    health_percent = 100
+    health_percent = min(health_percent + 20, 100)
     GlobalSignals.level_up.emit(level)
     print('level up: ', new_level)
 
