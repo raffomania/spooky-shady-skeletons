@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://drjl68dym5x1h"]
+[gd_scene load_steps=21 format=3 uid="uid://drjl68dym5x1h"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="2_fpfru"]
 [ext_resource type="Script" path="res://Player/DamageLight.gd" id="4_yfimt"]
 [ext_resource type="PackedScene" uid="uid://dn7ty60mgkdpu" path="res://Weapons/Burger/Burger.tscn" id="5_0sblv"]
-[ext_resource type="PackedScene" uid="uid://bt424qtt00s1a" path="res://Weapons/Donut/Donut.tscn" id="6_u2y65"]
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="6_x7uqw"]
 [ext_resource type="Texture2D" uid="uid://ddpy18jmgvrn6" path="res://Player/back.png" id="7_npkb5"]
 [ext_resource type="Texture2D" uid="uid://caovimbok8evf" path="res://Player/front.png" id="8_ibbtv"]
@@ -101,7 +100,6 @@ spot_angle_attenuation = 1.86606
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 5, 3)
 projection = 1
-current = true
 size = 10.0
 
 [node name="DamageDetector" type="Area3D" parent="."]
@@ -134,8 +132,6 @@ one_shot = true
 
 [node name="Burger" parent="." instance=ExtResource("5_0sblv")]
 damage = 50
-
-[node name="Donut" parent="." instance=ExtResource("6_u2y65")]
 
 [node name="DashParticles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)

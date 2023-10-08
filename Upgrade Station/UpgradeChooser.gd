@@ -4,10 +4,15 @@ class_name UpgradeChooser
 signal upgrade_chosen
 
 @export
-var kind: Upgrade.Kind
+var kind: Upgrade.Kind:
+    set = set_kind
 
 func _ready():
     $CountdownLabel.countdown_finished.connect(func(): upgrade_chosen.emit())
+
+
+func set_kind(val: Upgrade.Kind):
+    kind = val
     $Description.text = Upgrade.description(kind)
 
 

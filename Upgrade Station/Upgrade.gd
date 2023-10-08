@@ -2,7 +2,8 @@ class_name Upgrade
 
 enum Kind {
     Cake,
-    Speed
+    Speed,
+    Donut,
 }
 
 static func description(kind: Kind):
@@ -11,3 +12,5 @@ static func description(kind: Kind):
             return "A cake weapon to smash your enemies"
         Kind.Speed:
             return "10% more speed to make you blazingly fast"
+        Kind.Donut:
+            return "A circling donut weapon"

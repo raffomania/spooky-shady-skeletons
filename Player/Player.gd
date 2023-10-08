@@ -150,6 +150,10 @@ func on_upgrade_chosen(upgrade: Upgrade.Kind):
             add_child(cake)
         Upgrade.Kind.Speed:
             movement_speed *= 1.1
+        Upgrade.Kind.Donut:
+            var donut = preload("res://Weapons/Donut/Donut.tscn").instantiate()
+            add_child(donut)
+
 
 
 func collect_xp_orb(other: Area3D):
