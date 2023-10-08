@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wkggbceph75q"]
 
-[ext_resource type="Script" path="res://Weapons/Cake/AttackSystem.gd" id="1_qnef0"]
+[ext_resource type="Script" path="res://Weapons/Cake/Cake.gd" id="1_qnef0"]
 [ext_resource type="PackedScene" uid="uid://b5rux6f0i4k8x" path="res://Weapons/Cake/cake.tscn" id="2_tp0rw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4yxxp"]
