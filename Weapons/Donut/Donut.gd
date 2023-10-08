@@ -12,8 +12,6 @@ const default_distance: float = 4;
 const power_distance: float = 6;
 var max_distance: float = 4;
 
-func make_damage(enemy: Enemy):
-    enemy.take_damage(damage)
 
 func _ready():
     # Register our hit handler
@@ -30,5 +28,5 @@ func _process(_delta):
 
 
 func on_area_entered(other: Area3D):
-    if other is Enemy:
-        make_damage(other)
+    if other is Enemy || other is Friendly:
+        other.take_damage(damage)

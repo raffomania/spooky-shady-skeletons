@@ -6,6 +6,7 @@ func _ready():
     health = 200
     movement_speed = 0.5
     xp = 3.0
+    GlobalClock.beat.connect(jump_towards_player)
 
 
 func _process(delta):
