@@ -36,7 +36,6 @@ func take_damage(damage: int):
     was_hit = true
 
     if health <= 0:
-        print("sheep died")
         spawner.drop_loot(position, xp)
         GlobalSignals.spawn_skeletons.emit({
             "amount": 4,

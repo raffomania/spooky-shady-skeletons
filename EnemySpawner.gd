@@ -54,7 +54,6 @@ func spawn_skeletons(payload: Dictionary):
         skeleton.position.x += x_offset
         skeleton.position.z += z_offset
         add_child(skeleton)
-        print("skeletons spawned")
 
 
 func drop_loot(position, xp):

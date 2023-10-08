@@ -49,5 +49,5 @@ func handle_hit_animation_on_clock():
     if (was_hit):
         # now the hit sound should be played, then its in rythm
         was_hit = false
-        var material = $MeshInstance3D.get_active_material(0)
-        create_tween().tween_method(func(val): material.set_shader_parameter("hit_animation", val), 4.0,  0.0, GlobalClock.beat_duration / 2)
+        #var material = $MeshInstance3D.get_active_material(0)
+        #create_tween().tween_method(func(val): material.set_shader_parameter("hit_animation", val), 4.0,  0.0, GlobalClock.beat_duration / 2)
