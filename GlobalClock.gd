@@ -4,8 +4,9 @@ extends Node
 var beats_per_minute := 127
 var beat_duration := 60.0 / beats_per_minute
 
-# beats are the smallest rhythm unit, each time
+# beats are the base rhythm unit, each time
 # the kickdrum hits it's a beat
+# also known as a quarter note
 signal beat
 # a bar is 4 beats
 signal bar
@@ -60,10 +61,10 @@ func _process(_delta):
 func emit_beat():
     beat.emit()
     previous_beat_time = next_beat_time
-    print("beat %d" % beats)
+    # print("beat %d" % beats)
     if beats % 4 == 0:
         bar.emit()
-        print("bar ", floor(float(beats) / 4))
+        # print("bar ", floor(float(beats) / 4))
         previous_bar_time = next_beat_time
     if beats % 16 == 0:
         section.emit()

@@ -11,4 +11,3 @@ func _ready():
 func _process(delta):
     move_towards_player(delta)
     set_animation_shader_param()
-    handle_hit_animation_on_process()
