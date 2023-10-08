@@ -1,5 +1,5 @@
 extends Enemy
-class_name PumpkinMinion
+class_name Bat
 
 func _ready():
     super()
