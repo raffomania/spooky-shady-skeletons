@@ -39,7 +39,7 @@ func on_level_up():
 func on_new_level_chosen():
     await GlobalClock.beat
     # give the player a little time to adjust
-    await get_tree().create_timer(GlobalClock.beat_duration * 4).timeout
+    await get_tree().create_timer(GlobalClock.beat_duration * 2).timeout
     is_upgrading = false
 
     
@@ -50,7 +50,7 @@ func drop_loot(position, xp):
     add_child(drop)
 
 func spawn():
-    if is_upgrading:
+    if is_upgrading or GlobalClock.beats < 4:
         return
 
     var difficulty = difficulty_manager.difficulty
