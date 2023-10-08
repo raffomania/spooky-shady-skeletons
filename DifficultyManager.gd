@@ -7,6 +7,6 @@ var difficulty : float:
     get = calc_difficulty
 
 func calc_difficulty():
-    return 1.1 ** player.xp
+    return 1.0001 ** player.xp
 # func spawn_elements()
 
