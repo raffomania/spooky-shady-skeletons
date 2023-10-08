@@ -1,5 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://d357h3jwcrfso"]
+[gd_scene load_steps=6 format=3 uid="uid://d357h3jwcrfso"]
 
-[ext_resource type="PackedScene" uid="uid://dg5qx8im7qetm" path="res://Assets/Mini Dungeon Assets/floor.glb" id="1_6137i"]
+[ext_resource type="PackedScene" uid="uid://bjsa1h871206n" path="res://Assets/Mini Dungeon Assets/floor.glb" id="1_6137i"]
+[ext_resource type="Texture2D" uid="uid://dil6qrqskm7tw" path="res://Assets/Mini Dungeon Assets/Textures/colormap.png" id="2_wubue"]
 
-[node name="DungeonFloor" instance=ExtResource("1_6137i")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhrhx"]
+resource_name = "colormap"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_wubue")
+uv1_offset = Vector3(-0.125, 0, 0)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1a28q"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1.00001, 1e-05, 1),
+"format": 4097,
+"index_count": 6,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 1, 0, 3, 0, 2, 0),
+"name": "colormap",
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 63)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h140p"]
+resource_name = "floor_floor"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1.00001, 1e-05, 1),
+"attribute_data": PackedByteArray(0, 0, 176, 62, 154, 153, 121, 63, 0, 0, 176, 62, 154, 153, 121, 63, 0, 0, 176, 62, 154, 153, 121, 63, 0, 0, 176, 62, 154, 153, 121, 63),
+"format": 4119,
+"index_count": 6,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 1, 0, 3, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_uhrhx"),
+"name": "colormap",
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 191, 255, 127, 255, 255, 0, 0, 255, 191, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 63, 255, 127, 255, 255, 0, 0, 255, 191, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 191, 255, 127, 255, 255, 0, 0, 255, 191, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 63, 255, 127, 255, 255, 0, 0, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1a28q")
+
+[node name="DungeonFloorDarker" instance=ExtResource("1_6137i")]
+
+[node name="floor2" parent="." index="0"]
+mesh = SubResource("ArrayMesh_h140p")
