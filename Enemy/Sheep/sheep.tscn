@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgawx6dqttjit"]
+
+[ext_resource type="Script" path="res://Enemy/Sheep/sheep.gd" id="1_ot8av"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ltdc4"]
+height = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jp4cw"]
+size = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlo2c"]
+
+[node name="Sheep" type="Area3D"]
+script = ExtResource("1_ot8av")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_ltdc4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113336, 0.553488, -0.282635)
+mesh = SubResource("PlaneMesh_jp4cw")
+surface_material_override/0 = SubResource("StandardMaterial3D_wlo2c")

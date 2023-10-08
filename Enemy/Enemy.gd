@@ -1,4 +1,5 @@
 extends Area3D
+
 class_name Enemy
 
 # var camera : Camera3
@@ -19,7 +20,6 @@ var anim_offset : float
 # Also connect to the GlobalClock for beat based animations
 func _ready():
     add_to_group("enemies")
-    GlobalClock.beat.connect(jump)
     # randomize animation
     # anim_offset = (randi() % 4) * GlobalClock.beat_duration
 
@@ -31,7 +31,7 @@ func set_animation_shader_param():
 
     $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
 
-func set_direction(direction : Vector3):
+func set_sprite_direction(direction : Vector3):
     var rotated_direction_vector = direction.rotated(Vector3.UP, -PI / 4)
     var dir : int
     # rotate by Pi / 4
@@ -45,20 +45,22 @@ func set_direction(direction : Vector3):
             dir = 2
         else:
             dir = 3
-    
+
     $MeshInstance3D.get_active_material(0).set_shader_parameter("direction", dir)
 
 func move_towards_player(delta):
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed * delta
     global_position += velocity
-    set_direction(direction)
+    set_sprite_direction(direction)
+
 
 # All enemies jump based on the music beat
-func jump():
+func jump_towards_player():
     var direction = global_position.direction_to(player.global_position)
     var velocity = direction * movement_speed
     create_tween().tween_property(self, "position", position + velocity, 0.1)
+
 
 # Set the health for this enemy.
 func take_damage(damage: int):
@@ -73,5 +75,3 @@ func take_damage(damage: int):
         await GlobalClock.beat
         spawner.drop_loot(position, xp)
         queue_free()
-
-        #animation_enemy.play("die")
