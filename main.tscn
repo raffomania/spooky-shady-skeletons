@@ -23,9 +23,11 @@ tonemap_mode = 2
 [node name="EnemySpawner" type="Node" parent="."]
 script = ExtResource("5_g027a")
 spawn_count_skeletons = 2
-spawn_count_pumpkins = 1
 spawn_freq_skeletons = 2
+spawn_count_pumpkins = 1
 spawn_freq_pumpkins = 2
+spawn_count_sheep = 1
+spawn_freq_sheep = 8
 
 [node name="WorldGenerator" type="Node3D" parent="."]
 script = ExtResource("8_bn188")
