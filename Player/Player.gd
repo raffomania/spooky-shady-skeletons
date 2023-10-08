@@ -117,7 +117,6 @@ func set_health(health: float):
 
 func enable_dash():
     is_dash_possible = true
-    print("dash is possible now")
 
 func enter_upgrade(other: Area3D):
     if other is Upgrade and health_percent > 0 and !dashing:

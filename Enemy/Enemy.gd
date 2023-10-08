@@ -56,7 +56,6 @@ func jump():
 var was_hit : bool
 func handle_hit_animation_on_clock(): 
     if (was_hit):
-        print_debug("was hit")
         # now the hit sound should be played, then its in rythm
         was_hit = false
         var material = $MeshInstance3D.get_active_material(0)
