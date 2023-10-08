@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://csohnspvb374d"]
+[gd_scene load_steps=9 format=3 uid="uid://csohnspvb374d"]
 
 [ext_resource type="PackedScene" uid="uid://drjl68dym5x1h" path="res://Player/Player.tscn" id="2_n31m5"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="5_g027a"]
 [ext_resource type="AudioStream" uid="uid://3ktqa0gieguj" path="res://music.wav" id="5_i22ad"]
 [ext_resource type="Script" path="res://UpgradeStation.gd" id="7_1t088"]
+[ext_resource type="Script" path="res://HelpText.gd" id="7_f275a"]
 [ext_resource type="Script" path="res://World/WorldGenerator.gd" id="8_bn188"]
 [ext_resource type="PackedScene" uid="uid://cjjcopdf8axjd" path="res://Upgrade Station/Upgrade.tscn" id="8_ce70s"]
 
@@ -46,3 +47,14 @@ transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -5
 
 [node name="Upgrade3" parent="UpgradeStation" instance=ExtResource("8_ce70s")]
 transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -3.86763, -0.0300181, 2.00828)
+
+[node name="HelpText" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.764171, 0.361202, 3.30326)
+billboard = 1
+text = "Use WASD / Arrow keys to move
+Dodge the enemies
+Gain XP and level up!
+"
+font_size = 64
+horizontal_alignment = 0
+script = ExtResource("7_f275a")
