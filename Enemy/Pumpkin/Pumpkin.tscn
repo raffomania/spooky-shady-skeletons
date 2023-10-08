@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Enemy/Pumpkin/Pumpkin.gd" id="1_rtf6g"]
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_xijem"]
-[ext_resource type="Texture2D" uid="uid://d2ecsih8ixd4n" path="res://Enemy/Pumpkin/front.png" id="3_06ek6"]
-[ext_resource type="Texture2D" uid="uid://cigxg6je28qw3" path="res://Enemy/Pumpkin/back.png" id="3_rleil"]
-[ext_resource type="Texture2D" uid="uid://dm86hajnfsasp" path="res://Enemy/Pumpkin/looking_left.png" id="5_lh8cn"]
-[ext_resource type="Texture2D" uid="uid://daos3h65kxmad" path="res://Enemy/Pumpkin/looking_right.png" id="6_wh1xn"]
+[ext_resource type="Texture2D" uid="uid://b6i56smndfhvw" path="res://Enemy/Pumpkin/front.png" id="3_06ek6"]
+[ext_resource type="Texture2D" uid="uid://ddgucft5jgxil" path="res://Enemy/Pumpkin/back.png" id="3_rleil"]
+[ext_resource type="Texture2D" uid="uid://i8158ssnw3g3" path="res://Enemy/Pumpkin/looking_left.png" id="5_lh8cn"]
+[ext_resource type="Texture2D" uid="uid://cm1gw2f7kbheg" path="res://Enemy/Pumpkin/looking_right.png" id="6_wh1xn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7eci1"]
 resource_local_to_scene = true
