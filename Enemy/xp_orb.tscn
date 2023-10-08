@@ -10,6 +10,7 @@ radius = 1.26055
 script = ExtResource("1_teejf")
 
 [node name="candle" parent="." instance=ExtResource("1_vs7rf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ub0xm")
