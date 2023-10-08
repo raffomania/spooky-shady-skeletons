@@ -28,7 +28,7 @@ orientation = 1
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wp03p"]
 particle_flag_align_y = true
 spread = 29.52
-gravity = Vector3(0, 1, 0)
+gravity = Vector3(0, 10, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 3.0
 damping_min = 2.0
@@ -110,13 +110,12 @@ damage = 50
 [node name="Donut" parent="." instance=ExtResource("6_u2y65")]
 
 [node name="DashParticles" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+cast_shadow = 0
 emitting = false
-amount = 10
 lifetime = 0.73
 one_shot = true
 explosiveness = 0.77
-trail_enabled = true
 trail_lifetime = 0.99
 process_material = SubResource("ParticleProcessMaterial_wp03p")
 draw_passes = 2
