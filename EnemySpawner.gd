@@ -11,6 +11,9 @@ class_name EnemySpawner
 @export var spawn_count_pumpkins : int
 @export var spawn_freq_pumpkins : int
 
+@export var spawn_count_bat : int
+@export var spawn_freq_bat : int
+
 @export var spawn_count_sheep : int
 @export var spawn_freq_sheep : int
 
@@ -20,6 +23,7 @@ var skeleton_scene : Resource
 var pumpkin_scene : Resource
 var pumpkin_minion_scene : Resource
 var sheep_scene : Resource
+var bat_scene : Resource
 var drop_scene : Resource
 var is_upgrading := false
 
@@ -30,6 +34,7 @@ func _ready():
     pumpkin_scene = preload("res://Enemy/Pumpkin/Pumpkin.tscn")
     pumpkin_minion_scene = preload("res://Enemy/PumpkinMinion/PumpkinMinion.tscn")
     sheep_scene = preload("res://Enemy/Sheep/sheep.tscn")
+    bat_scene = preload("res://Enemy/Bat/Bat.tscn")
     drop_scene = preload("res://Enemy/xp_orb.tscn")
     GlobalSignals.level_up.connect(on_level_up)
     GlobalSignals.new_level_chosen.connect(on_new_level_chosen)
@@ -47,13 +52,16 @@ func on_level_up(level: int):
             child.queue_free()
 
     # Increase enemy spawn amount
-    spawn_count_skeletons += 1
 
     if (level % 2 == 1):
         spawn_count_pumpkin_minions += 1
-
-    if (level % 3 == 1):
+    elif (level % 3 == 1):
         spawn_count_sheep += 1
+        spawn_count_bat += 1
+    elif (level % 4 == 1):
+        spawn_count_pumpkins += 1
+    else:
+        spawn_count_skeletons += 1
 
 
 func on_new_level_chosen(_upgrade: Upgrade.Kind):
