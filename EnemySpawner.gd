@@ -30,7 +30,6 @@ func _ready():
     GlobalSignals.new_level_chosen.connect(on_new_level_chosen)
     GlobalClock.section.connect(spawn)
     GlobalSignals.spawn_skeletons.connect(spawn_skeletons)
-    GlobalClock.bar.connect(spawn)
     add_to_group("spawner")
 
 
