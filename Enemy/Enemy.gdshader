@@ -1,7 +1,7 @@
 // NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's StandardMaterial3D.
 
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+render_mode blend_mix,depth_prepass_alpha,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 uniform vec4 albedo : source_color;
 uniform float point_size : hint_range(0,128);
 uniform float roughness : hint_range(0,1);
@@ -38,13 +38,13 @@ uniform float animation_progress : hint_range(0,1);
 // uniform int current_frame; // calculate in shader based on beat
 
 void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
-	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+    UV=UV*uv1_scale.xy+uv1_offset.xy;
+    MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
+    MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
 }
 
 void fragment() {
-	vec2 base_uv = UV;
+    vec2 base_uv = UV;
 
     // calculate current frame
     int current_frame = int(animation_progress * float(total_frames));   
@@ -55,9 +55,9 @@ void fragment() {
     base_uv = vec2((float(base_uv.x) + float(tile_pos_x)) / float(h_frames), (float(base_uv.y) + float(tile_pos_y)) / float(v_frames));
     //  directions
     vec4 albedo_tex;
-	if (direction == 0) {
-		albedo_tex = texture(front_texture,base_uv);
-	} else if (direction == 1) {
+    if (direction == 0) {
+        albedo_tex = texture(front_texture,base_uv);
+    } else if (direction == 1) {
         albedo_tex = texture(back_texture,base_uv);
     } else if (direction == 2) {
         albedo_tex = texture(looking_left_texture,base_uv);
