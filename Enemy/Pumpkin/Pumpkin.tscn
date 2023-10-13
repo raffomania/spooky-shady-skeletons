@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c26uhm02pdxod"]
+[gd_scene load_steps=13 format=3 uid="uid://c26uhm02pdxod"]
 
 [ext_resource type="Script" path="res://Enemy/Pumpkin/Pumpkin.gd" id="1_rtf6g"]
 [ext_resource type="Shader" path="res://Enemy/Enemy.gdshader" id="2_xijem"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://hor8vs501gd3" path="res://Enemy/Pumpkin/back.png" id="3_rleil"]
 [ext_resource type="Texture2D" uid="uid://cbqrpwp8g02t2" path="res://Enemy/Pumpkin/looking_left.png" id="5_lh8cn"]
 [ext_resource type="Texture2D" uid="uid://cmxegmjuds074" path="res://Enemy/Pumpkin/looking_right.png" id="6_wh1xn"]
+[ext_resource type="Shader" path="res://Enemy/enemy_shadow.gdshader" id="7_r5m60"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7eci1"]
 resource_local_to_scene = true
@@ -42,12 +43,41 @@ orientation = 2
 [sub_resource type="SphereShape3D" id="SphereShape3D_h8ana"]
 radius = 1.25
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1plum"]
+render_priority = 0
+shader = ExtResource("7_r5m60")
+shader_parameter/shadow_color = Color(0.0431373, 0.0431373, 0.160784, 0.572549)
+shader_parameter/size = 3.0
+shader_parameter/light_position = Vector3(0, 5, 0.1)
+shader_parameter/debug = 0.0
+shader_parameter/debug2 = null
+shader_parameter/direction = 0
+shader_parameter/idle = false
+shader_parameter/h_frames = 3
+shader_parameter/v_frames = 3
+shader_parameter/total_frames = 8
+shader_parameter/animation_progress = 0.0
+shader_parameter/front_texture = ExtResource("3_06ek6")
+shader_parameter/back_texture = ExtResource("3_rleil")
+shader_parameter/looking_left_texture = ExtResource("5_lh8cn")
+shader_parameter/looking_right_texture = ExtResource("6_wh1xn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_imoxg"]
+material = SubResource("ShaderMaterial_1plum")
+uv2_padding = 2.23
+size = Vector2(3, 3)
+orientation = 1
+
 [node name="Pumpkin" type="Area3D"]
 script = ExtResource("1_rtf6g")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Billboard" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 mesh = SubResource("PlaneMesh_g33ew")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_h8ana")
+
+[node name="ShadowPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("QuadMesh_imoxg")

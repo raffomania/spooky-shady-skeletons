@@ -1,0 +1,74 @@
+[gd_resource type="Shader" format=3 uid="uid://37ixqgxwdo1c"]
+
+[resource]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_add,depth_draw_opaque,cull_back,diffuse_burley,specular_disabled,depth_test_disabled;
+uniform vec4 shadow_color : source_color;
+
+// front 0
+// back 1
+// left 2
+// right 3
+uniform int direction : hint_range(0,3);
+uniform sampler2D front_texture : source_color,filter_nearest_mipmap,repeat_enable; 
+uniform sampler2D back_texture : source_color,filter_nearest_mipmap,repeat_enable;
+uniform sampler2D looking_left_texture : source_color,filter_nearest_mipmap,repeat_enable;
+uniform sampler2D looking_right_texture : source_color,filter_nearest_mipmap,repeat_enable;
+uniform sampler2D idle_texture : source_color,filter_nearest_mipmap,repeat_enable;
+uniform bool idle;
+
+uniform float hit_animation : hint_range(0,1);
+uniform vec4 hit_anim_color : source_color;
+
+//animation
+uniform int h_frames;
+uniform int v_frames;
+uniform int total_frames;
+uniform float animation_progress : hint_range(0,1);
+
+void vertex() {
+}
+
+void fragment() {
+	 vec2 base_uv = UV;
+
+    // calculate current frame
+    int current_frame = int(animation_progress * float(total_frames));   
+    int tile_pos_x = current_frame % h_frames;
+    int tile_pos_y = current_frame / v_frames;
+
+    //uv frame calc for animation
+    base_uv = vec2((float(base_uv.x) + float(tile_pos_x)) / float(h_frames), (float(base_uv.y) + float(tile_pos_y)) / float(v_frames));
+
+	//shadow uv translation 
+	// base_uv = base_uv * 3.0;
+    
+    // directions
+    vec4 albedo_tex;
+    if (direction == 0) {
+        albedo_tex = texture(front_texture,base_uv);
+    } else if (direction == 1) {
+        albedo_tex = texture(back_texture,base_uv);
+    } else if (direction == 2) {
+        albedo_tex = texture(looking_left_texture,base_uv);
+    } else {
+        albedo_tex = texture(looking_right_texture,base_uv);
+    }
+
+    if (idle) {
+        albedo_tex = texture(idle_texture,base_uv);
+    }
+
+    if (base_uv.x > 1.0 || base_uv.x < 0.0) {
+        albedo_tex.a = 0.0;
+    }
+    if (base_uv.y > 1.0 || base_uv.y < 0.0) {
+        albedo_tex.a = 0.0;
+    }
+
+    ALBEDO = albedo_tex.rgb + (hit_anim_color.rgb * float(hit_animation));
+    ALPHA = albedo_tex.a;
+}
+"

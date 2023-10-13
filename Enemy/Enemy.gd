@@ -29,7 +29,11 @@ func set_animation_shader_param():
     if anim_with_offset > 1:
         anim_with_offset -= 1
 
-    $MeshInstance3D.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
+    $Billboard.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
+    $ShadowPlane.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
+    $ShadowPlane.get_active_material(0).set_shader_parameter("light_position", $"../../Player/HealthLight".global_position)
+    # print_debug($"../../Player/HealthLight".transform.world_position)
+
 
 func set_sprite_direction(direction : Vector3):
     var rotated_direction_vector = direction.rotated(Vector3.UP, -PI / 4)
@@ -46,7 +50,8 @@ func set_sprite_direction(direction : Vector3):
         else:
             dir = 3
 
-    $MeshInstance3D.get_active_material(0).set_shader_parameter("direction", dir)
+    $Billboard.get_active_material(0).set_shader_parameter("direction", dir)
+    $ShadowPlane.get_active_material(0).set_shader_parameter("direction", dir)
 
 func move_towards_player(delta):
     if health <= 0: return
@@ -71,7 +76,7 @@ func take_damage(damage: int):
     health -= damage
     # print("Took %d damage. Health now: %d" % [damage, health])
 
-    var material = $MeshInstance3D.get_active_material(0)
+    var material = $Billboard.get_active_material(0)
     create_tween().tween_method(func(val): material.set_shader_parameter("hit_animation", val), 4.0,  0.0, GlobalClock.beat_duration / 2)
 
     if health <= 0:
