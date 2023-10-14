@@ -36,6 +36,7 @@ func set_sprite_direction(direction : Vector3):
             dir = 3
 
     $Billboard.get_active_material(0).set_shader_parameter("direction", dir)
+    $ShadowPlane.get_active_material(0).set_shader_parameter("direction", dir)
 
 func move_towards_player(delta):
     if health <= 0: return
@@ -51,6 +52,7 @@ func set_animation_shader_param():
         anim_with_offset -= 1
 
     $Billboard.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
+    $ShadowPlane.get_active_material(0).set_shader_parameter("animation_progress", anim_with_offset)
 
 
 var was_hit : bool

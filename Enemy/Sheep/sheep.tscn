@@ -38,9 +38,8 @@ shader_parameter/idle_texture = ExtResource("5_yc73e")
 material = SubResource("ShaderMaterial_s5wif")
 size = Vector2(0.85, 0.85)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ltdc4"]
-height = 0.488004
-radius = 0.240019
+[sub_resource type="SphereShape3D" id="SphereShape3D_u322n"]
+radius = 0.253295
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7we5t"]
 render_priority = 0
@@ -72,11 +71,12 @@ script = ExtResource("1_ot8av")
 
 [node name="Billboard" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 8.88178e-16)
+cast_shadow = 0
 mesh = SubResource("QuadMesh_rbdmm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.210575, 0)
-shape = SubResource("CylinderShape3D_ltdc4")
+shape = SubResource("SphereShape3D_u322n")
 
 [node name="ShadowPlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)

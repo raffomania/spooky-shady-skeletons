@@ -73,6 +73,7 @@ script = ExtResource("1_rtf6g")
 
 [node name="Billboard" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_g33ew")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

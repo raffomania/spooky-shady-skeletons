@@ -8,7 +8,7 @@ uniform float size;
 // uniform float shadow_angle;
 uniform vec3 light_position;
 
-uniform float debug : hint_range(-5,10);
+uniform float debug : hint_range(-5,30);
 uniform float debug2 : hint_range(-5,5);
 
 // front 0
@@ -39,15 +39,10 @@ vec2 rotate(vec2 uv, vec2 pivot, float angle) {
 	return uv;
 }
 
-void vertex() {
-}
-
 void fragment() {
 	vec2 base_uv = UV;
 
-
-    
-	//shadow uv translation 
+	//shadow uv transformation 
     // scale size
 	base_uv = base_uv * size;
     //translate sprite sheet to anim frame 0
@@ -56,22 +51,18 @@ void fragment() {
     // move shadow to bottom of leg
     base_uv.y += 0.5;
 
-    //calculate shadow stretch
-
     vec3 shadow_vector = normalize(light_position - NODE_POSITION_WORLD);
-    // vec2 shadow_vector = normalize(light_position.xz - NODE_POSITION_WORLD.xz);
-
-    // float stretch = debug + 1.0; // 0.2 - 20, klein ist weit gestretched
-    // ALBEDO = vec3(dot(vec3(0.0, 1.0, 0.0), shadow_vector),dot(vec3(0.0, 1.0, 0.0), shadow_vector),dot(vec3(0.0, 1.0, 0.0), shadow_vector));
-    // float stretch = acos(dot(vec3(0.0, 1.0, 0.0), shadow_vector));
-    // base_uv.y = base_uv.y * (1.0 - stretch) + stretch;
 
     // calculate shadow angle
     vec3 midpoint = vec3(0.5,0.0,1.0);
-    float dot = shadow_vector.x;
+    float dot_ = shadow_vector.x;
     float det = shadow_vector.z;
-    float shadow_angle = atan(det,dot);
-    base_uv = rotate(base_uv, midpoint.xz, shadow_angle);
+    float shadow_angle = atan(det,dot_);
+    base_uv = rotate(base_uv, midpoint.xz, shadow_angle + PI);
+
+    //calculate shadow stretch
+    float stretch = exp(0.85 * dot(vec3(0.0, 1.0, 0.0), shadow_vector));
+    base_uv.y = base_uv.y * (1.0 - stretch) + stretch;
 
     // trimming
     if (base_uv.x > 1.0) {
@@ -110,7 +101,5 @@ void fragment() {
     }
 
     ALBEDO = shadow_color.xyz;
-    // ALBEDO = vec3(base_uv, 0.0);
-    ALBEDO = albedo_tex.xyz;
     ALPHA = albedo_tex.a * shadow_color.a;
 }

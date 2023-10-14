@@ -166,7 +166,7 @@ func collect_xp_orb(other: Area3D):
 func set_animation_shader_param():
     $Billboard.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.beat_progress)
     $ShadowPlane.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.beat_progress)
-    $ShadowPlane.get_active_material(0).set_shader_parameter("light_position", $HealthLight.global_position + Vector3(0.2, 0, 0.01))
+    $ShadowPlane.get_active_material(0).set_shader_parameter("light_position", $HealthLight.global_position) 
 
 func set_sprite_direction(direction : Vector3):
     var rotated_direction_vector = direction.rotated(Vector3.UP, -PI / 4)
@@ -186,8 +186,11 @@ func set_sprite_direction(direction : Vector3):
     if (direction.length() < 0.00001):
         dir = 0
         $Billboard.get_active_material(0).set_shader_parameter("idle", true)
+        $ShadowPlane.get_active_material(0).set_shader_parameter("idle", true)
     else:
         $Billboard.get_active_material(0).set_shader_parameter("idle", false)
+        $ShadowPlane.get_active_material(0).set_shader_parameter("idle", false)
 
     $Billboard.get_active_material(0).set_shader_parameter("direction", dir)
+    $ShadowPlane.get_active_material(0).set_shader_parameter("direction", dir)
 
