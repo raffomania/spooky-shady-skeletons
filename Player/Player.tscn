@@ -95,7 +95,7 @@ size = Vector2(1.2, 1.2)
 render_priority = 0
 shader = ExtResource("10_dddtv")
 shader_parameter/shadow_color = Color(0.0470588, 0.0509804, 0.152941, 0.572549)
-shader_parameter/size = 3.0
+shader_parameter/size = 8.0
 shader_parameter/light_position = Vector3(0, 5, 2)
 shader_parameter/debug = 0.0
 shader_parameter/debug2 = null
@@ -114,7 +114,7 @@ shader_parameter/idle_texture = ExtResource("9_iynd0")
 [sub_resource type="QuadMesh" id="QuadMesh_jkem0"]
 material = SubResource("ShaderMaterial_7o7d3")
 uv2_padding = 2.23
-size = Vector2(3, 3)
+size = Vector2(10, 10)
 orientation = 1
 
 [node name="Player" type="Node3D"]

@@ -48,7 +48,7 @@ radius = 1.25
 render_priority = 0
 shader = ExtResource("7_aadsb")
 shader_parameter/shadow_color = Color(0.0431373, 0.0431373, 0.160784, 0.572549)
-shader_parameter/size = 3.0
+shader_parameter/size = 8.0
 shader_parameter/light_position = Vector3(0, 5, 0.1)
 shader_parameter/debug = 0.0
 shader_parameter/debug2 = null
@@ -66,7 +66,7 @@ shader_parameter/looking_right_texture = ExtResource("6_cs6wy")
 [sub_resource type="QuadMesh" id="QuadMesh_2pys1"]
 material = SubResource("ShaderMaterial_bk7pn")
 uv2_padding = 2.23
-size = Vector2(3, 3)
+size = Vector2(10, 10)
 orientation = 1
 
 [node name="PumpkinMinion" type="Area3D"]

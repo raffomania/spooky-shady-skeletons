@@ -46,16 +46,16 @@ radius = 1.25
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1plum"]
 render_priority = 0
 shader = ExtResource("7_r5m60")
-shader_parameter/shadow_color = Color(0.0431373, 0.0431373, 0.160784, 0.572549)
-shader_parameter/size = 3.0
-shader_parameter/light_position = Vector3(0, 5, 0.1)
+shader_parameter/shadow_color = Color(0.752941, 0.780392, 0.956863, 0.572549)
+shader_parameter/size = 3.665
+shader_parameter/light_position = Vector3(0, 7.495, 1)
 shader_parameter/debug = 0.0
 shader_parameter/debug2 = null
 shader_parameter/direction = 0
 shader_parameter/idle = false
-shader_parameter/h_frames = 3
-shader_parameter/v_frames = 3
-shader_parameter/total_frames = 8
+shader_parameter/h_frames = 2
+shader_parameter/v_frames = 2
+shader_parameter/total_frames = 4
 shader_parameter/animation_progress = 0.0
 shader_parameter/front_texture = ExtResource("3_06ek6")
 shader_parameter/back_texture = ExtResource("3_rleil")
@@ -65,7 +65,7 @@ shader_parameter/looking_right_texture = ExtResource("6_wh1xn")
 [sub_resource type="QuadMesh" id="QuadMesh_imoxg"]
 material = SubResource("ShaderMaterial_1plum")
 uv2_padding = 2.23
-size = Vector2(3, 3)
+size = Vector2(10, 10)
 orientation = 1
 
 [node name="Pumpkin" type="Area3D"]
