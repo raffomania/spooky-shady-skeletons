@@ -38,7 +38,7 @@ var beat_progress
 var bar_progress
 
 func _ready():
-    get_tree().get_root().get_node("/root/Main/AudioStreamPlayer").finished.connect(start_playing)
+    # get_tree().get_root().get_node("/root/Main/AudioStreamPlayer").finished.connect(start_playing)
     start_playing()
 
 func start_playing():
@@ -47,8 +47,9 @@ func start_playing():
     previous_beat_time = 0.0
     previous_bar_time = 0.0
     time_begin = Time.get_ticks_usec()
-    time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
-    get_tree().get_root().get_node("/root/Main/AudioStreamPlayer").play()
+    # time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+    time_delay = 0
+    # get_tree().get_root().get_node("/root/Main/AudioStreamPlayer").play()
 
 
 func _process(_delta):

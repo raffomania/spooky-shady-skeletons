@@ -112,6 +112,8 @@ func set_health(health: float):
     $HealthLight.spot_angle = 10 + 65 * (health_percent / 100.0)
     if health_percent <= 0:
         # stop accepting player input
+        $"../EndText".visible = true
+        $"../EndText".set_text("test")
         set_process(false)
 
 func enable_dash():
@@ -166,7 +168,7 @@ func collect_xp_orb(other: Area3D):
 func set_animation_shader_param():
     $Billboard.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.beat_progress)
     $ShadowPlane.get_active_material(0).set_shader_parameter("animation_progress", GlobalClock.beat_progress)
-    $ShadowPlane.get_active_material(0).set_shader_parameter("light_position", $HealthLight.global_position) 
+    $ShadowPlane.get_active_material(0).set_shader_parameter("light_position", $HealthLight.global_position + movement_direction) 
 
 func set_sprite_direction(direction : Vector3):
     var rotated_direction_vector = direction.rotated(Vector3.UP, -PI / 4)

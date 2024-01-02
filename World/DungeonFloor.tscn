@@ -1,5 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d357h3jwcrfso"]
+[gd_scene load_steps=3 format=3 uid="uid://d357h3jwcrfso"]
 
-[ext_resource type="PackedScene" uid="uid://dg5qx8im7qetm" path="res://Assets/Mini Dungeon Assets/floor.glb" id="1_6137i"]
+[ext_resource type="PackedScene" uid="uid://bjsa1h871206n" path="res://Assets/Mini Dungeon Assets/floor.glb" id="1_6137i"]
+[ext_resource type="Script" path="res://World/DungeonFloor.gd" id="2_vg3f2"]
 
 [node name="DungeonFloor" instance=ExtResource("1_6137i")]
+script = ExtResource("2_vg3f2")
+shadow_color = Color(0.556863, 0.184314, 0.329412, 0.537255)

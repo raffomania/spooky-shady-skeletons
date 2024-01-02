@@ -4,9 +4,10 @@ class_name Bat
 func _ready():
     super()
     health = 50
-    movement_speed = 1.3
+    movement_speed = 1.2
     xp = 2.0
     GlobalClock.beat.connect(jump_towards_player)
+
 
 
 func _process(delta):

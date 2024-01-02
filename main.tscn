@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://csohnspvb374d"]
+[gd_scene load_steps=11 format=3 uid="uid://csohnspvb374d"]
 
 [ext_resource type="PackedScene" uid="uid://drjl68dym5x1h" path="res://Player/Player.tscn" id="2_n31m5"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="5_g027a"]
@@ -23,6 +23,8 @@ volumetric_fog_albedo = Color(0.858824, 0.556863, 0.803922, 1)
 volumetric_fog_emission = Color(1, 0, 0, 1)
 volumetric_fog_emission_energy = 0.0
 
+[sub_resource type="SystemFont" id="SystemFont_5aws0"]
+
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_n31m5")]
@@ -39,6 +41,7 @@ script = ExtResource("8_bn188")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_i22ad")
+autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lx8fk")
@@ -58,17 +61,31 @@ transform = Transform3D(0.68881, 0, -0.724942, 0, 1, 0, 0.724942, 0, 0.68881, -3
 
 [node name="HelpText" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.764171, 4.1496, 3.30326)
+pixel_size = 0.002
 billboard = 1
-text = "Spooky Shady Skeletons
-
-Use WASD / Arrow keys to move
-Press shift to dodge the enemies
+shaded = true
+no_depth_test = true
+alpha_antialiasing_mode = 1
+texture_filter = 0
+modulate = Color(0.815686, 0.815686, 0.815686, 1)
+text = "Use WASD / Arrow keys to move.
+Press shift to dodge the enemies.
+Kick your Burger Weapon to destroy enemies.
 Gain XP and level up!
 
 Music by Ben Zimmermann"
-font_size = 64
+font = SubResource("SystemFont_5aws0")
+font_size = 128
 horizontal_alignment = 0
 script = ExtResource("7_f275a")
 
 [node name="DifficultyManager" type="Node" parent="."]
 script = ExtResource("8_cxfok")
+
+[node name="EndText" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02062, 0)
+visible = false
+billboard = 1
+text = "You reached Level:
+You gathered XP"
+font_size = 64
